@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://md4leugoai73"
-path="res://.godot/imported/lorryframe.png-d12f34e83417c3d971217eb22927dcea.ctex"
+uid="uid://dmvk22m52ahcs"
+path="res://.godot/imported/staff.png-b6c3df5b6b375658f4e3059c85b61883.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lorryframe.png"
-dest_files=["res://.godot/imported/lorryframe.png-d12f34e83417c3d971217eb22927dcea.ctex"]
+source_file="res://assets/staff.png"
+dest_files=["res://.godot/imported/staff.png-b6c3df5b6b375658f4e3059c85b61883.ctex"]
 
 [params]
 

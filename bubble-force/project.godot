@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Bubble Force"
-run/main_scene="res://scenes/opening/opening_with_logo.tscn"
+run/main_scene="res://levels/van.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
@@ -82,5 +82,6 @@ copy_path="res://"
 
 [rendering]
 
+textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

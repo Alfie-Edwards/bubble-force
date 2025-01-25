@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://md4leugoai73"
-path="res://.godot/imported/lorryframe.png-d12f34e83417c3d971217eb22927dcea.ctex"
+uid="uid://52qqjqqg1vn0"
+path="res://.godot/imported/ghostfront.png-790059c17d4475236f3848fe419cd66e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lorryframe.png"
-dest_files=["res://.godot/imported/lorryframe.png-d12f34e83417c3d971217eb22927dcea.ctex"]
+source_file="res://assets/ghostfront.png"
+dest_files=["res://.godot/imported/ghostfront.png-790059c17d4475236f3848fe419cd66e.ctex"]
 
 [params]
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cukbhgmh462b4"]
+
+[ext_resource type="Script" path="res://game_objects/item.gd" id="1_smt2l"]
+[ext_resource type="Texture2D" uid="uid://wm6pfb5y0xxp" path="res://assets/wrap.png" id="2_3jdix"]
+
+[node name="Item" type="RigidBody2D"]
+contact_monitor = true
+max_contacts_reported = 100
+script = ExtResource("1_smt2l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Wrapping" type="Line2D" parent="."]
+closed = true
+width = 0.0
+texture = ExtResource("2_3jdix")
+texture_mode = 1

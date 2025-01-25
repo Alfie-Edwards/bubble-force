@@ -50,14 +50,14 @@
 
 * [ ] frame of the van
 * [ ] background graphics (inc. turning)
-* [ ] items that bounce around
-    * [ ] big box
-    * [ ] little box
-    * [ ] fragile : URN
-    * [ ] 'this way up'
-    * [ ] explosive
-    * [ ] health and wrap level
-    * [ ] damage
+* [x] items that bounce around
+    * [x] big box
+    * [x] little box
+    * [x] fragile : URN
+    * [x] 'this way up'
+    * [x] explosive
+    * [x] health and wrap level
+    * [x] damage
 * [ ] character controller
     * [x] running
     * [x] jumping
@@ -65,9 +65,9 @@
     * [~] picking up/putting down items
     * [ ] wrapping items
 * [ ] wrapping
-    * [ ] graphics (existing wrappings)
+    * [x] graphics (existing wrappings)
     * [ ] graphics (new wrap going around)
-    * [ ] collisions
+    * [x] collisions
 * [ ] turning (throwing things around)
     * [ ] any telegraphing (other than ui)
     * [ ] throwing things around

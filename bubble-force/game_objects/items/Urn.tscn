@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://centid6hghplj"]
+
+[ext_resource type="Script" path="res://game_objects/items/urn.gd" id="1_ehjbh"]
+[ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="2_mi67h"]
+[ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="3_3w0os"]
+
+[sub_resource type="Gradient" id="Gradient_txlbj"]
+colors = PackedColorArray(0.513726, 0, 0, 1, 0.705882, 0.129412, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcn6u"]
+gradient = SubResource("Gradient_txlbj")
+width = 60
+height = 120
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ich2t"]
+size = Vector2(60, 120)
+
+[sub_resource type="Resource" id="Resource_i4gek"]
+script = ExtResource("3_3w0os")
+polygon = PackedVector2Array(0, -60, -30, -60, -30, 60, 30, 60, 30, -60)
+
+[node name="Urn" type="Node2D"]
+script = ExtResource("1_ehjbh")
+
+[node name="Item" parent="." instance=ExtResource("2_mi67h")]
+type = "urn"
+sprite = SubResource("GradientTexture2D_mcn6u")
+collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_ich2t")])
+wrapping_path = SubResource("Resource_i4gek")
+max_health = 25.0
+health = 25.0
+wrapping = 15.0
