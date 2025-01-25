@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=42 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="PackedScene" uid="uid://centid6hghplj" path="res://game_objects/items/Urn.tscn" id="2_3f57k"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b3mksq6hcqaoi" path="res://game_objects/items/potion.tscn" id="5_pajhq"]
 [ext_resource type="Texture2D" uid="uid://bx0cfvlw7bmr6" path="res://assets/frontjump.png" id="7_comwr"]
 [ext_resource type="Texture2D" uid="uid://d3vkseguega1q" path="res://assets/sidejump.png" id="8_2mtl1"]
+[ext_resource type="Texture2D" uid="uid://dy6550syyb1hx" path="res://assets/sidewalk.png" id="9_vh1xn"]
 
 [sub_resource type="Gradient" id="Gradient_bqfsu"]
 offsets = PackedFloat32Array(0, 0.285714, 0.75974, 0.808442)
@@ -88,6 +89,50 @@ region = Rect2(0, 991, 441, 991)
 atlas = ExtResource("8_2mtl1")
 region = Rect2(441, 991, 441, 991)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj7de"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(0, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muaeu"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(448, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kams0"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(896, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mber"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(1344, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm3vf"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(1792, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60osl"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(2240, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8hjw"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(2688, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00wdx"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(3136, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckt38"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(3584, 0, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxpk3"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(0, 841, 448, 841)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhtvk"]
+atlas = ExtResource("9_vh1xn")
+region = Rect2(448, 841, 448, 841)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_yp3l4"]
 animations = [{
 "frames": [{
@@ -159,6 +204,44 @@ animations = [{
 "loop": true,
 "name": &"JumpSide",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj7de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_muaeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kams0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mber")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm3vf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60osl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8hjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00wdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckt38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxpk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhtvk")
+}],
+"loop": true,
+"name": &"WalkSide",
+"speed": 5.0
 }]
 
 [node name="Van" type="Node2D"]
@@ -210,6 +293,6 @@ position = Vector2(411, 221)
 position = Vector2(811, 308)
 scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_yp3l4")
-animation = &"JumpSide"
+animation = &"WalkSide"
 frame = 5
-frame_progress = 0.572556
+frame_progress = 0.201378
