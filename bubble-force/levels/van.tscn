@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjfqc6a0ngmr3"]
+
+[ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/box.tscn" id="1_774ox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
+size = Vector2(733, 575)
+
+[node name="Van" type="Node2D"]
+
+[node name="Physics" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics"]
+position = Vector2(356.5, 277.5)
+shape = SubResource("RectangleShape2D_0wj6x")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(0, 1, 0, 564, 695, 565, 691, -7)
+
+[node name="Box2" parent="." instance=ExtResource("1_774ox")]
+position = Vector2(332, 70)
+
+[node name="Box3" parent="." instance=ExtResource("1_774ox")]
+position = Vector2(308, 365)
+
+[node name="Box" parent="." instance=ExtResource("1_774ox")]
+position = Vector2(246, 211)

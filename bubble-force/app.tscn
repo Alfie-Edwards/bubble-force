@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhxcw0s27l413"]
+
+[ext_resource type="PackedScene" uid="uid://cjfqc6a0ngmr3" path="res://levels/van.tscn" id="1_f6v00"]
+
+[node name="App" type="Node2D"]
+
+[node name="Van" parent="." instance=ExtResource("1_f6v00")]
