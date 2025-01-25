@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=4 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/box.tscn" id="1_774ox"]
+[ext_resource type="PackedScene" uid="uid://ycl1q4vqjohy" path="res://game_objects/player.tscn" id="2_dda04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
 size = Vector2(733, 575)
@@ -13,9 +14,9 @@ size = Vector2(733, 575)
 position = Vector2(356.5, 277.5)
 shape = SubResource("RectangleShape2D_0wj6x")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 build_mode = 1
 polygon = PackedVector2Array(0, 1, 0, 564, 695, 565, 691, -7)
 
@@ -27,3 +28,6 @@ position = Vector2(308, 365)
 
 [node name="Box" parent="." instance=ExtResource("1_774ox")]
 position = Vector2(246, 211)
+
+[node name="Player" parent="." instance=ExtResource("2_dda04")]
+position = Vector2(377, 218)
