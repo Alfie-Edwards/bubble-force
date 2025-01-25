@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=9 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/box.tscn" id="1_774ox"]
+[ext_resource type="Script" path="res://levels/van.gd" id="1_g0cur"]
 [ext_resource type="PackedScene" uid="uid://76ih45l57rg7" path="res://scenes/player/player.tscn" id="2_cx720"]
 
 [sub_resource type="Gradient" id="Gradient_bqfsu"]
@@ -23,6 +24,7 @@ fill_from = Vector2(0.575688, 1)
 fill_to = Vector2(0.571101, 0)
 
 [node name="Van" type="Node2D"]
+script = ExtResource("1_g0cur")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)

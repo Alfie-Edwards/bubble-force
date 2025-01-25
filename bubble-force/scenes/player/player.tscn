@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://76ih45l57rg7"]
+[gd_scene load_steps=27 format=3 uid="uid://76ih45l57rg7"]
 
 [ext_resource type="Texture2D" uid="uid://c1ii8e83w5ujb" path="res://assets/knight.png" id="1_b01km"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ywren"]
@@ -171,6 +171,8 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="QuadMesh" id="QuadMesh_3byov"]
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
 script = ExtResource("1_ywren")
@@ -189,3 +191,9 @@ autoplay = "idle"
 position = Vector2(0, -9)
 target_position = Vector2(10, 0)
 collision_mask = 2
+
+[node name="Hand" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_3byov")
+
+[node name="Shoulder" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_3byov")

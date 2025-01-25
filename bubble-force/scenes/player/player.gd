@@ -3,10 +3,12 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grab_ray: RayCast2D = $RayCast2D
+@onready var hand: = $Hand
+@onready var shoulder: = $Shoulder
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const GRAB_TARGET_RIGHT = Vector2(10, 0)
+const ARM_LENGTH = 15
 
 var facing_right: bool = true
 
@@ -21,6 +23,16 @@ func _physics_process(delta: float) -> void:
 		print("picked up ", picked_up.name)
 
 	move_and_slide()
+
+
+func _process(delta: float) -> void:
+	# set arm rotation
+	var mouse_pos: = get_viewport().get_mouse_position()
+
+	grab_ray.target_position = (mouse_pos - grab_ray.global_position).normalized() * ARM_LENGTH + grab_ray.position
+
+	shoulder.position = grab_ray.position
+	hand.position = grab_ray.target_position
 
 
 func handle_movement(delta: float) -> void:
@@ -55,11 +67,6 @@ func set_animation() -> void:
 
 
 func maybe_pick_up() -> Node:
-	if facing_right:
-		grab_ray.target_position = GRAB_TARGET_RIGHT
-	else:
-		grab_ray.target_position = -GRAB_TARGET_RIGHT
-
 	if Input.is_action_just_pressed("Pickup"):
 		return grab_ray.get_collider()
 	return null
