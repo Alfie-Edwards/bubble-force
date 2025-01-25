@@ -28,8 +28,8 @@ type = "explosives"
 sprite = SubResource("GradientTexture2D_02qwq")
 collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_ld641")])
 wrapping_path = SubResource("Resource_u6ucc")
-max_health = 10
-health = 10
+max_health = 10.0
+health = 10.0
 
 [node name="Explosion" parent="Item" instance=ExtResource("4_tu184")]
 radius = 500.0

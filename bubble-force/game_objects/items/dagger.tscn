@@ -27,5 +27,5 @@ type = "dagger"
 sprite = SubResource("GradientTexture2D_f4ncv")
 collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_1e254")])
 wrapping_path = SubResource("Resource_sn28x")
-max_health = 100
-health = 100
+max_health = 100.0
+health = 100.0

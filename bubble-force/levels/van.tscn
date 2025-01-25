@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=10 format=3 uid="uid://cjfqc6a0ngmr3"]
 
+[ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="PackedScene" uid="uid://centid6hghplj" path="res://game_objects/items/urn.tscn" id="2_3f57k"]
 [ext_resource type="PackedScene" uid="uid://ycl1q4vqjohy" path="res://game_objects/player.tscn" id="2_dda04"]
 [ext_resource type="PackedScene" uid="uid://cqeyw2vnhwo04" path="res://game_objects/items/explosives.tscn" id="3_rcx38"]
@@ -16,14 +17,6 @@ fill_to = Vector2(0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
 size = Vector2(1152, 648)
-
-[sub_resource type="Gradient" id="Gradient_t78fi"]
-colors = PackedColorArray(0.4435, 0.265531, 0.207188, 1, 0.540239, 0.373637, 0.259986, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gyky3"]
-gradient = SubResource("Gradient_t78fi")
-fill_from = Vector2(0.575688, 1)
-fill_to = Vector2(0.571101, 0)
 
 [node name="Van" type="Node2D"]
 
@@ -44,30 +37,28 @@ shape = SubResource("RectangleShape2D_0wj6x")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(9, 9)
 build_mode = 1
-polygon = PackedVector2Array(133, 21, 135, 518, 979, 515, 982, 19)
+polygon = PackedVector2Array(249, 91, 249, 444, 876, 444, 876, 91)
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls"]
-position = Vector2(565, 277.5)
-scale = Vector2(13.2187, 7.76563)
-texture = SubResource("GradientTexture2D_gyky3")
-metadata/_edit_lock_ = true
+position = Vector2(582, 323)
+scale = Vector2(0.411485, 0.411485)
+texture = ExtResource("1_727li")
 
 [node name="Player" parent="." instance=ExtResource("2_dda04")]
-position = Vector2(877, 363)
+position = Vector2(804, 343)
 
 [node name="Urn" parent="." instance=ExtResource("2_3f57k")]
 position = Vector2(352, 383)
 
 [node name="Explosives" parent="." instance=ExtResource("3_rcx38")]
-position = Vector2(527, 74)
+position = Vector2(571, 151)
 
 [node name="Dagger" parent="." instance=ExtResource("4_kfxqe")]
-position = Vector2(751, 491)
+position = Vector2(695, 345)
 
 [node name="Potion" parent="." instance=ExtResource("5_pajhq")]
 position = Vector2(411, 221)
