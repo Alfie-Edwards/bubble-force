@@ -97,3 +97,12 @@
     * [ ] engine noise
     * [ ] turning sounds
     * [ ] speed bump sound
+* [ ] item breaking sounds
+    * [ ] cauldron metallic breaking
+    * [ ] book breaking (eg. tearing paper)
+    * [ ] potion/urn breaking
+    * [ ] spirit being released
+        * [ ] spirit wooooo
+    * [ ] smoke being released
+    * [ ] explosion
+* [ ] indicator alarm for when a turn's coming up
