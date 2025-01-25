@@ -4,12 +4,15 @@ extends Sprite2D
 @onready var collider: Area2D = $Area2D
 
 const INITIAL_SPEED: float = 10
-const LIFETIME_SECONDS = 3
+const BASE_LIFETIME_SECONDS = 3
 const POP_DURATION = 0.2
+const SCALE_RANGE = 0.4
+const LIFETIME_RANGE = 0.4
 
 var direction: float = 0
 var time_started: int = 0
 var popping: bool = false
+var lifetime: float = 0
 
 
 func initialise(pos: Vector2, velocity: Vector2) -> void:
@@ -18,13 +21,19 @@ func initialise(pos: Vector2, velocity: Vector2) -> void:
 	time_started = Time.get_ticks_msec()
 	direction = velocity.angle()
 
+	var size = randf_range(1 - (SCALE_RANGE / 2), 1 + (SCALE_RANGE / 2))
+	scale *= Vector2(size, size)
+
+	lifetime = BASE_LIFETIME_SECONDS * randf_range(1 - (LIFETIME_RANGE / 2),
+	                                               1 + (LIFETIME_RANGE / 2))
+
 
 func age() -> float:
 	return (Time.get_ticks_msec() - time_started) / 1000.0
 
 
 func current_speed() -> float:
-	var age_fraction = age() / LIFETIME_SECONDS
+	var age_fraction = age() / lifetime
 	var eased = 1.0 if age_fraction == 1.0 else 1.0 - pow(2, -10 * age_fraction)
 	return (1 - eased) * INITIAL_SPEED
 
@@ -33,11 +42,11 @@ func _physics_process(_delta: float) -> void:
 	if collider.has_overlapping_bodies():
 		pop()
 	elif not popping:
-		if age() < LIFETIME_SECONDS:
+		if age() < lifetime:
 			var speed = current_speed()
 			var velocity = Vector2(speed * cos(direction), speed * sin(direction))
 			position += velocity
-		elif age() < LIFETIME_SECONDS + POP_DURATION:
+		elif age() < lifetime + POP_DURATION:
 			pass
 		else:
 			pop()
