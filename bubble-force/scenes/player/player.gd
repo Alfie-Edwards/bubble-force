@@ -3,8 +3,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grab_ray: RayCast2D = $RayCast2D
-@onready var hand: = $Hand
-@onready var shoulder: = $Shoulder
+# @onready var hand: = $Hand
+# @onready var shoulder: = $Shoulder
+@onready var arm: = $Arm
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -25,14 +26,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# set arm rotation
 	var mouse_pos: = get_viewport().get_mouse_position()
 
 	grab_ray.target_position = (mouse_pos - grab_ray.global_position).normalized() * ARM_LENGTH + grab_ray.position
 
-	shoulder.position = grab_ray.position
-	hand.position = grab_ray.target_position
+	# shoulder.position = grab_ray.position
+	# hand.position = grab_ray.target_position
+
+	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, 0)
+
+	arm.position = (arm_pos + grab_ray.target_position) / 2
+	arm.rotation = atan2(grab_ray.target_position.y - arm_pos.y,
+                         grab_ray.target_position.x - arm_pos.x)
 
 
 func handle_movement(delta: float) -> void:
