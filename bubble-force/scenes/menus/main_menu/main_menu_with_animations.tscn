@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d18hjlcbw5ih0"]
+[gd_scene load_steps=19 format=3 uid="uid://d18hjlcbw5ih0"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cve0u"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_wnblf"]
@@ -349,6 +349,8 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+[sub_resource type="Theme" id="Theme_l61kq"]
+
 [node name="MainMenu" instance=ExtResource("1_cve0u")]
 script = ExtResource("2_wnblf")
 game_scene_path = "res://app.tscn"
@@ -375,16 +377,22 @@ modulate = Color(1, 1, 1, 0)
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
-text = "Bubble Force"
+text = "BoOoOober"
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+text = "A Good Tem Gem"
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
 lock = true
+
+[node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
+theme = SubResource("Theme_l61kq")
 
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
 unique_name_in_owner = true
