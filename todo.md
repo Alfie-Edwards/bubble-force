@@ -2,6 +2,15 @@
 
 * [ ] determine theming
 * [ ] determine list of item types
+    * big box: Cauldron
+    * little box: Tome
+    * fragile: Urn
+      - Releases spirit when it breaks
+    * 'this way up': Potion bottle
+      - Effect when it breaks
+        - Smoke
+    * explosive: explosive Box
+    * pops bubble wrap: sacrificial knife
 
 # graphics assets
 
@@ -25,6 +34,7 @@
     * [ ] falling frame(s)
     * [ ] picking up frames?
     * [ ] holding item frames
+    * [ ] wrapping frames
 * [ ] font(s) for in-game ui
     * numeric indicators for how long before item's dropped off
     * score
@@ -35,9 +45,13 @@
 * [ ] frame of the van
 * [ ] background graphics (inc. turning)
 * [ ] items that bounce around
-    * [ ] basic rectangles
+    * [ ] big box
+    * [ ] little box
+    * [ ] fragile : URN
     * [ ] 'this way up'
     * [ ] explosive
+    * [ ] health and wrap level
+    * [ ] damage
 * [ ] character controller
     * [ ] running
     * [ ] jumping
@@ -75,3 +89,7 @@
     * small/med/large?
 * [ ] game music
     * increasing intensity?
+* [ ] driving sounds
+    * [ ] engine noise
+    * [ ] turning sounds
+    * [ ] speed bump sound
