@@ -36,6 +36,8 @@ func _ready() -> void:
 	for rect in collision_shapes:
 		var collision_shape = CollisionShape2D.new()
 		collision_shape.shape = rect.duplicate()
+		collision_shape.set_collision_layer_value(2, true)
+		collision_shape.set_collision_mask_value(2, true)
 		add_child((collision_shape))
 		_collision_shapes.append(collision_shape)
 	update_wrapping(wrapping)
