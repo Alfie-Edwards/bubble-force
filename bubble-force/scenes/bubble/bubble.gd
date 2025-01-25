@@ -8,6 +8,7 @@ const BASE_LIFETIME_SECONDS = 3
 const POP_DURATION = 0.2
 const SCALE_RANGE = 0.4
 const LIFETIME_RANGE = 0.4
+const DIRECTION_RANGE = 0.4
 
 var direction: float = 0
 var time_started: int = 0
@@ -19,7 +20,10 @@ func initialise(pos: Vector2, velocity: Vector2) -> void:
 	position = pos
 
 	time_started = Time.get_ticks_msec()
+
 	direction = velocity.angle()
+	direction += randf_range(-DIRECTION_RANGE / 2,
+	                         DIRECTION_RANGE / 2)
 
 	var size = randf_range(1 - (SCALE_RANGE / 2), 1 + (SCALE_RANGE / 2))
 	scale *= Vector2(size, size)
