@@ -21,20 +21,24 @@
     * [ ] objects passing by?
 * [ ] frame of the van
 * [ ] background of inside the van
+    * [ ] Tyres spinning (2 frames?)
+    * [ ] Background objects to pass by on the sides
 * [ ] items
-    * [ ] small
-    * [ ] big
-    * [ ] 'this way up'
-    * [ ] explosive
+    * [ ] Urn
+    * [ ] Tome
+    * [ ] Potion bottle
+    * [ ] Box labelled Explosive
+    * [ ] Sacrificial Knife
 * [ ] character
-    * [ ] standing frames
-    * [ ] running frames
-    * [ ] jumping frames
-    * [ ] airhang frame(s)
-    * [ ] falling frame(s)
+    * With and without bubble wand:
+        * [ ] standing frames
+        * [ ] running frames
+        * [ ] jumping frames
+        * [ ] airhang frame(s)
+        * [ ] falling frame(s)
     * [ ] picking up frames?
     * [ ] holding item frames
-    * [ ] wrapping frames
+    * [ ] Bubble blowing
 * [ ] font(s) for in-game ui
     * numeric indicators for how long before item's dropped off
     * score
