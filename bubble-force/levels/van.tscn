@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjfqc6a0ngmr3"]
 
-[ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/box.tscn" id="1_774ox"]
+[ext_resource type="PackedScene" uid="uid://centid6hghplj" path="res://game_objects/items/Urn.tscn" id="2_3f57k"]
 [ext_resource type="PackedScene" uid="uid://ycl1q4vqjohy" path="res://game_objects/player.tscn" id="2_dda04"]
 
 [sub_resource type="Gradient" id="Gradient_bqfsu"]
@@ -28,15 +28,18 @@ fill_to = Vector2(0.571101, 0)
 position = Vector2(576, 324)
 scale = Vector2(18, 10.125)
 texture = SubResource("GradientTexture2D_ar0hv")
+metadata/_edit_lock_ = true
 
 [node name="Physics" type="Area2D" parent="."]
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Physics"]
 position = Vector2(576, 324)
 shape = SubResource("RectangleShape2D_0wj6x")
 
 [node name="Walls" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(9, 9)
@@ -48,14 +51,8 @@ position = Vector2(565, 277.5)
 scale = Vector2(13.2187, 7.76563)
 texture = SubResource("GradientTexture2D_gyky3")
 
-[node name="Box2" parent="." instance=ExtResource("1_774ox")]
-position = Vector2(431, 122)
-
-[node name="Box3" parent="." instance=ExtResource("1_774ox")]
-position = Vector2(282, 378)
-
-[node name="Box" parent="." instance=ExtResource("1_774ox")]
-position = Vector2(246, 211)
-
 [node name="Player" parent="." instance=ExtResource("2_dda04")]
 position = Vector2(877, 363)
+
+[node name="Urn" parent="." instance=ExtResource("2_3f57k")]
+position = Vector2(290, 131)
