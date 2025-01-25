@@ -1,17 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqeyw2vnhwo04"]
+[gd_scene load_steps=7 format=3 uid="uid://cqeyw2vnhwo04"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_5jirx"]
 [ext_resource type="Script" path="res://game_objects/items/explosives.gd" id="1_og3pr"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_2tp6m"]
 [ext_resource type="PackedScene" uid="uid://cv0ocuptg3tng" path="res://game_objects/effects/explosion.tscn" id="4_tu184"]
-
-[sub_resource type="Gradient" id="Gradient_yvu5h"]
-colors = PackedColorArray(0.513726, 0, 0, 1, 0.705882, 0.129412, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_02qwq"]
-gradient = SubResource("Gradient_yvu5h")
-width = 60
-height = 60
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld641"]
 size = Vector2(60, 60)
@@ -25,12 +17,11 @@ script = ExtResource("1_og3pr")
 
 [node name="Item" parent="." instance=ExtResource("1_5jirx")]
 type = "explosives"
-sprite = SubResource("GradientTexture2D_02qwq")
 collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_ld641")])
 wrapping_path = SubResource("Resource_u6ucc")
 max_health = 10.0
 health = 10.0
 
 [node name="Explosion" parent="Item" instance=ExtResource("4_tu184")]
-radius = 500.0
+radius = 200.0
 strength = 1000.0

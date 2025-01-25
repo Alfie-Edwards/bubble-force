@@ -1,11 +1,9 @@
-@tool
 extends RigidBody2D
 
 const DAMAGE_THRESHOLD = 100
 const DAMAGE_MULTIPLIER = 0.01
 
 @export var type: String
-@export var sprite: Texture
 @export var collision_shapes: Array[RectangleShape2D]
 @export var wrapping_path: Vector2ArrayResource
 @export var max_health: float = -1
@@ -31,7 +29,6 @@ var _collision_shapes: Array[CollisionShape2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Sprite2D.texture = sprite
 	$Wrapping.points = wrapping_path.polygon
 	for rect in collision_shapes:
 		var collision_shape = CollisionShape2D.new()
@@ -84,8 +81,6 @@ func _get_configuration_warnings():
 		warnings.append("`collision_shapes` unset.")
 	if not wrapping_path:
 		warnings.append("`wrapping_path` unset.")
-	if not sprite:
-		warnings.append("`sprite` unset.")
 	if not type:
 		warnings.append("`type` unset.")
 	return warnings

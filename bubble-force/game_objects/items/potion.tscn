@@ -1,16 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3mksq6hcqaoi"]
+[gd_scene load_steps=6 format=3 uid="uid://b3mksq6hcqaoi"]
 
 [ext_resource type="Script" path="res://game_objects/items/potion.gd" id="1_geh57"]
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_nigdf"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_i0aic"]
-
-[sub_resource type="Gradient" id="Gradient_r1jgr"]
-colors = PackedColorArray(0.513726, 0, 0, 1, 0.705882, 0.129412, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c2svs"]
-gradient = SubResource("Gradient_r1jgr")
-width = 60
-height = 120
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ich2t"]
 size = Vector2(60, 120)
@@ -24,7 +16,6 @@ script = ExtResource("1_geh57")
 
 [node name="Item" parent="." instance=ExtResource("1_nigdf")]
 type = "potion"
-sprite = SubResource("GradientTexture2D_c2svs")
 collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_ich2t")])
 wrapping_path = SubResource("Resource_p37qi")
 max_health = 100.0

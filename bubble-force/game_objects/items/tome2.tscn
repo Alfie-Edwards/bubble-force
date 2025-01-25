@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://om6r82rs80af"]
+
+[ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_d6e2x"]
+[ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_48bi1"]
+[ext_resource type="Texture2D" uid="uid://65ktdt0pq0kr" path="res://assets/tome2.png" id="3_71yh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lukxi"]
+size = Vector2(86, 116)
+
+[sub_resource type="Resource" id="Resource_bu76d"]
+script = ExtResource("2_48bi1")
+polygon = PackedVector2Array(19, 52, 34, 53, 43, 8, 44, -35, 40, -43, 26, -51, -4, -57, -26, -59, -38, -56, -43, -29, -40, -10, -44, 22, -41, 39, -29, 57)
+
+[node name="Tome2" type="Node2D"]
+
+[node name="Item" parent="." instance=ExtResource("1_d6e2x")]
+type = "tome"
+collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_lukxi")])
+wrapping_path = SubResource("Resource_bu76d")
+max_health = 100.0
+health = 100.0
+wrapping = 15.0
+metadata/_edit_group_ = true
+
+[node name="Tome" type="Sprite2D" parent="Item"]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.259669, 0.259669)
+texture = ExtResource("3_71yh7")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tthdmso3jpw7"]
+
+[ext_resource type="Texture2D" uid="uid://52qqjqqg1vn0" path="res://assets/ghostfront.png" id="1_8q13c"]
+
+[node name="Gost" type="Sprite2D"]
+texture = ExtResource("1_8q13c")
