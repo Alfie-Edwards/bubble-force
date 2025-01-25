@@ -108,3 +108,7 @@
     * [ ] smoke being released
     * [ ] explosion
 * [ ] indicator alarm for when a turn's coming up
+* [ ] sound when shooting bubble staff?
+* [ ] sound when bubble shot from staff hits something?
+    * could have different sounds when the bubble hits the wall, vs. an item,
+      vs. popping in the air, but that can be a stretch
