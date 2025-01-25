@@ -14,6 +14,8 @@ const ARM_LENGTH = 15
 var facing_right: bool = true
 var staff = null
 
+var bubble_scene = preload("res://scenes/bubble/bubble.tscn")#.instantiate()
+
 
 func holding_staff() -> bool:
 	return staff != null
@@ -46,6 +48,24 @@ func _process(_delta: float) -> void:
 	arm.get_node("HeldStaff").visible = holding_staff()
 
 
+func _input(event):
+	if holding_staff() and event.is_action_pressed("Click"):
+		shoot()
+
+
+func hand_pos() -> Vector2:
+	return grab_ray.position + grab_ray.target_position
+
+func shoot():
+	var bubble = bubble_scene.instantiate()
+
+	bubble.initialise(position + (hand_pos() * scale), hand_pos() - grab_ray.position)
+
+	get_parent().add_child(bubble)
+
+	pass
+
+
 func set_arm_rotation() -> void:
 	# set arm rotation
 	var mouse_pos: = get_viewport().get_mouse_position()
@@ -55,12 +75,12 @@ func set_arm_rotation() -> void:
 	# shoulder.position = grab_ray.position
 	# hand.position = grab_ray.target_position
 
-	var target_pos_rel_to_player = grab_ray.position + grab_ray.target_position
+	var hp = hand_pos()
 	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, grab_ray.scale.y / 2)
 
-	arm.position = (arm_pos + target_pos_rel_to_player) / 2
-	arm.rotation = atan2(target_pos_rel_to_player.y - arm_pos.y,
-                         target_pos_rel_to_player.x - arm_pos.x)
+	arm.position = (arm_pos + hp) / 2
+	arm.rotation = atan2(hp.y - arm_pos.y,
+                         hp.x - arm_pos.x)
 
 
 func handle_movement(delta: float) -> void:

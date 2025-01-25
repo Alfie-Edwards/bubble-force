@@ -80,7 +80,7 @@
     * [ ] score
     * [ ] sequence of levels
 * [ ] levels
-* [ ] main menu
+* [x] main menu
 * [ ] you lose
 * [ ] you win
 * [ ] any in-game ui?
