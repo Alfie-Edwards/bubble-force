@@ -50,16 +50,17 @@ func set_arm_rotation() -> void:
 	# set arm rotation
 	var mouse_pos: = get_viewport().get_mouse_position()
 
-	grab_ray.target_position = (mouse_pos - grab_ray.global_position).normalized() * ARM_LENGTH + grab_ray.position
+	grab_ray.target_position = (mouse_pos - grab_ray.global_position).normalized() * ARM_LENGTH
 
 	# shoulder.position = grab_ray.position
 	# hand.position = grab_ray.target_position
 
-	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, 0)
+	var target_pos_rel_to_player = grab_ray.position + grab_ray.target_position
+	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, grab_ray.scale.y / 2)
 
-	arm.position = (arm_pos + grab_ray.target_position) / 2
-	arm.rotation = atan2(grab_ray.target_position.y - arm_pos.y,
-                         grab_ray.target_position.x - arm_pos.x)
+	arm.position = (arm_pos + target_pos_rel_to_player) / 2
+	arm.rotation = atan2(target_pos_rel_to_player.y - arm_pos.y,
+                         target_pos_rel_to_player.x - arm_pos.x)
 
 
 func handle_movement(delta: float) -> void:

@@ -9,17 +9,8 @@ var state: StaffState = StaffState.IDLE
 var origin: Vector2 = Vector2(0, 0)
 
 
-# var spriteTween = null
-
 func _ready() -> void:
 	origin = position
-
-	# spriteTween = Tween.new()
-	# add_child(spriteTween)
-
-
-# func _process(delta: float) -> void:
-# 	pass
 
 
 func try_take() -> bool:
