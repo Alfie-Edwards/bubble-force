@@ -58,11 +58,11 @@ position = Vector2(352, 383)
 position = Vector2(571, 151)
 
 [node name="Player" parent="." instance=ExtResource("2_cx720")]
-position = Vector2(809, 393)
+position = Vector2(769, 386)
 scale = Vector2(5, 5)
 
 [node name="Staff" parent="." instance=ExtResource("4_06ja2")]
-position = Vector2(945, 447)
+position = Vector2(836, 349)
 scale = Vector2(5, 5)
 
 [node name="Dagger" parent="." instance=ExtResource("4_kfxqe")]
