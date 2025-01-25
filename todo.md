@@ -39,6 +39,8 @@
     * [ ] picking up frames?
     * [ ] holding item frames
     * [ ] Bubble blowing
+* [ ] Bubble staff
+* [ ] Bubble staff station
 * [ ] font(s) for in-game ui
     * numeric indicators for how long before item's dropped off
     * score

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=8 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/box.tscn" id="1_774ox"]
 [ext_resource type="PackedScene" uid="uid://ycl1q4vqjohy" path="res://game_objects/player.tscn" id="2_dda04"]
@@ -13,6 +13,14 @@ fill_to = Vector2(0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
 size = Vector2(1152, 648)
+
+[sub_resource type="Gradient" id="Gradient_t78fi"]
+colors = PackedColorArray(0.4435, 0.265531, 0.207188, 1, 0.540239, 0.373637, 0.259986, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gyky3"]
+gradient = SubResource("Gradient_t78fi")
+fill_from = Vector2(0.575688, 1)
+fill_to = Vector2(0.571101, 0)
 
 [node name="Van" type="Node2D"]
 
@@ -33,13 +41,18 @@ shape = SubResource("RectangleShape2D_0wj6x")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(9, 9)
 build_mode = 1
-polygon = PackedVector2Array(-9, -9, -9, 639, 1143, 639, 1145, -9)
+polygon = PackedVector2Array(133, 21, 135, 518, 979, 515, 982, 19)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(565, 277.5)
+scale = Vector2(13.2187, 7.76563)
+texture = SubResource("GradientTexture2D_gyky3")
 
 [node name="Box2" parent="." instance=ExtResource("1_774ox")]
-position = Vector2(332, 70)
+position = Vector2(431, 122)
 
 [node name="Box3" parent="." instance=ExtResource("1_774ox")]
-position = Vector2(188, 363)
+position = Vector2(282, 378)
 
 [node name="Box" parent="." instance=ExtResource("1_774ox")]
 position = Vector2(246, 211)
