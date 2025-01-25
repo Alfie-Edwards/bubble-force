@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://cb08r8o8fg0co"]
+
+[ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_hy5m5"]
+[ext_resource type="Script" path="res://game_objects/items/dagger.gd" id="1_yxcf1"]
+[ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_lbp8t"]
+
+[sub_resource type="Gradient" id="Gradient_gh2tp"]
+colors = PackedColorArray(0.513726, 0, 0, 1, 0.705882, 0.129412, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f4ncv"]
+gradient = SubResource("Gradient_gh2tp")
+width = 30
+height = 15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e254"]
+size = Vector2(30, 15)
+
+[sub_resource type="Resource" id="Resource_sn28x"]
+script = ExtResource("2_lbp8t")
+polygon = PackedVector2Array(0, 8, 15, 8, 15, -7, -15, -7, -15, 8)
+
+[node name="Dagger" type="Node2D"]
+script = ExtResource("1_yxcf1")
+
+[node name="Item" parent="." instance=ExtResource("1_hy5m5")]
+type = "dagger"
+sprite = SubResource("GradientTexture2D_f4ncv")
+collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_1e254")])
+wrapping_path = SubResource("Resource_sn28x")
+max_health = 100
+health = 100

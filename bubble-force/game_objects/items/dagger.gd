@@ -6,7 +6,7 @@ func _ready() -> void:
 	$Item._on_death = _on_death
 
 func _on_death() -> void:
-	print("Im an urn and I'm dead.")
+	print("Im a dagger and I'm dead.")
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

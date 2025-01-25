@@ -56,7 +56,7 @@
     * [ ] fragile : URN
     * [ ] 'this way up'
     * [ ] explosive
-    * [ ] health and wrap level
+    * [x] health and wrap level
     * [ ] damage
 * [ ] character controller
     * [ ] running
