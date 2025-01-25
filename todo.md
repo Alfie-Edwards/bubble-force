@@ -59,10 +59,10 @@
     * [ ] health and wrap level
     * [ ] damage
 * [ ] character controller
-    * [ ] running
-    * [ ] jumping
+    * [x] running
+    * [x] jumping
     * [ ] getting hit by bigger items?
-    * [ ] picking up/putting down items
+    * [~] picking up/putting down items
     * [ ] wrapping items
 * [ ] wrapping
     * [ ] graphics (existing wrappings)

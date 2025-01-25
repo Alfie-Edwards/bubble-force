@@ -12,6 +12,11 @@ const JUMP_VELOCITY = -400.0
 const ARM_LENGTH = 15
 
 var facing_right: bool = true
+var staff = null
+
+
+func holding_staff() -> bool:
+	return staff != null
 
 
 func _physics_process(delta: float) -> void:
@@ -19,14 +24,29 @@ func _physics_process(delta: float) -> void:
 
 	set_animation()
 
-	var picked_up: Node = maybe_pick_up()
-	if picked_up != null:
-		print("picked up ", picked_up.name)
+	if holding_staff() and Input.is_action_just_pressed("Pickup"):
+		print("dropped the staff!!")
+		staff.release(grab_ray.global_position, arm.rotation)
+		staff = null
+	else:
+		var picked_up: Node = maybe_pick_up()
+		if picked_up != null:
+			print("picked up ", picked_up.name)
+			if picked_up.owner.name == "Staff":
+				if picked_up.owner.try_take():
+					print("picked up the staff!!")
+					staff = picked_up.owner
 
 	move_and_slide()
 
 
 func _process(_delta: float) -> void:
+	set_arm_rotation()
+
+	arm.get_node("HeldStaff").visible = holding_staff()
+
+
+func set_arm_rotation() -> void:
 	# set arm rotation
 	var mouse_pos: = get_viewport().get_mouse_position()
 
