@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grab_ray: RayCast2D = $RayCast2D
-# @onready var hand: = $Hand
-# @onready var shoulder: = $Shoulder
 @onready var arm: = $Arm
 
 const SPEED = 300.0
@@ -14,7 +12,7 @@ const ARM_LENGTH = 15
 var facing_right: bool = true
 var staff = null
 
-var bubble_scene = preload("res://scenes/bubble/bubble.tscn")#.instantiate()
+var bubble_scene = preload("res://scenes/bubble/bubble.tscn")
 
 
 func holding_staff() -> bool:
@@ -71,9 +69,6 @@ func set_arm_rotation() -> void:
 	var mouse_pos: = get_viewport().get_mouse_position()
 
 	grab_ray.target_position = (mouse_pos - grab_ray.global_position).normalized() * ARM_LENGTH
-
-	# shoulder.position = grab_ray.position
-	# hand.position = grab_ray.target_position
 
 	var hp = hand_pos()
 	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, grab_ray.scale.y / 2)
