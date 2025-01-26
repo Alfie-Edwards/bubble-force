@@ -1,7 +1,7 @@
 # general
 
-* [ ] determine theming
-* [ ] determine list of item types
+* [x] determine theming
+* [x] determine list of item types
     * big box: Cauldron
     * little box: Tome
     * fragile: Urn
@@ -58,23 +58,23 @@
     * [x] explosive
     * [x] health and wrap level
     * [x] damage
-* [ ] character controller
+* [~] character controller
     * [x] running
     * [x] jumping
-    * [ ] getting hit by bigger items?
+    * [x] getting hit by bigger items?
     * [~] picking up/putting down items
-    * [ ] wrapping items
-* [ ] wrapping
+    * [x] wrapping items
+* [x] wrapping
     * [x] graphics (existing wrappings)
-    * [ ] graphics (new wrap going around)
+    * [x] graphics (new wrap going around)
     * [x] collisions
 * [ ] turning (throwing things around)
     * [ ] any telegraphing (other than ui)
-    * [ ] throwing things around
+    * [x] throwing things around
 * [ ] basic framework
     * [ ] items getting added & dropped off
         * [ ] indicators
-        * [ ] scripting the sequence of this for a level
+        * [x] scripting the sequence of this for a level
     * [ ] lose if item(s) broken
     * [ ] win if get to the end
     * [ ] score
