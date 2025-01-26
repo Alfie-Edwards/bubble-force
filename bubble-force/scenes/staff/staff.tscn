@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://byel3yxvjjhp4"]
+[gd_scene load_steps=5 format=3 uid="uid://byel3yxvjjhp4"]
 
 [ext_resource type="Script" path="res://scenes/staff/staff.gd" id="1_bumyj"]
+[ext_resource type="Texture2D" uid="uid://dmvk22m52ahcs" path="res://assets/staff.png" id="2_0vykp"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_qqj0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_poipt"]
-size = Vector2(2, 16)
+size = Vector2(35, 151)
 
 [node name="Staff" type="Node2D"]
 script = ExtResource("1_bumyj")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(0, -2.38419e-07)
-scale = Vector2(2, 16)
+scale = Vector2(6, 100)
 mesh = SubResource("QuadMesh_qqj0u")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -20,4 +22,9 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5, -1.5)
 shape = SubResource("RectangleShape2D_poipt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_0vykp")

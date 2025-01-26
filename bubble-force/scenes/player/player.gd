@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+# @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedPlayer2
 @onready var grab_ray: RayCast2D = $RayCast2D
 @onready var arm: = $Arm
 @onready var lol: = $Lol
@@ -9,7 +10,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const ARM_LENGTH = 15
+const ARM_LENGTH = 100
 const BUBBLE_COOLDOWN_SECONDS = 0.3
 
 const PUSH_FORCE = 15.0
@@ -31,6 +32,26 @@ var held_item_parent: Node = null
 
 func holding_staff() -> bool:
 	return staff != null
+
+
+func _ready() -> void:
+	animated_sprite.connect("animation_looped", anim_finished)
+	animated_sprite.connect("animation_finished", anim_finished)
+
+
+func set_ground_anim() -> void:
+	if velocity.x != 0:
+		animated_sprite.play("WalkSide")
+	else:
+		animated_sprite.play("IdleSide")
+
+
+func anim_finished() -> void:
+	if animated_sprite.animation == "JumpWindupSide":
+		if !is_on_floor():
+			animated_sprite.play("AirUpSide")
+	elif animated_sprite.animation == "FallSide" and is_on_floor():
+		set_ground_anim()
 
 
 func _physics_process(delta: float) -> void:
@@ -103,14 +124,13 @@ func _physics_process(delta: float) -> void:
 
 func shunt(collider, vector: Vector2) -> void:
 	if collider is RigidBody2D:
-		# print("applying force to ", collider)
 		collider.apply_central_impulse(vector)
 
 
 func _process(_delta: float) -> void:
 	set_arm_rotation()
 
-	arm.get_node("HeldStaff").visible = holding_staff()
+	# arm.get_node("HeldStaff").visible = holding_staff()
 
 	if holding_staff() and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var now = Time.get_ticks_msec()
@@ -138,8 +158,15 @@ func set_arm_rotation() -> void:
 	var hp = hand_pos()
 	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, grab_ray.scale.y / 2)
 
-	arm.position = (arm_pos + hp) / 2
-	arm.rotation = atan2(hp.y - arm_pos.y, hp.x - arm_pos.x)
+
+	var arm_length = arm.texture.get_height() * arm.scale.y
+
+	var arm_distance_fraction = arm_length / ARM_LENGTH
+	arm.position = arm_pos + (hp - arm_pos) * (1 - arm_distance_fraction)
+	arm.flip_h = facing_right
+
+	# arm.position = (arm_pos + hp) / 2
+	arm.rotation = atan2(hp.y - arm_pos.y, hp.x - arm_pos.x) - PI / 2
 
 
 func handle_movement(delta: float) -> void:
@@ -150,6 +177,7 @@ func handle_movement(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("Up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		animated_sprite.play("JumpWindupSide")
 
 	# Get the input direction (-1, 0, 1) and handle the movement/deceleration.
 	var direction := Input.get_axis("Left", "Right")
@@ -161,16 +189,38 @@ func handle_movement(delta: float) -> void:
 
 
 func set_animation() -> void:
-	# Play animations
-	if !is_on_floor():
-		animated_sprite.play("jump")
-	elif velocity.x != 0:
-		animated_sprite.play("run")
-	else:
-		animated_sprite.play("idle")
+	# # Play animations
+	# if !is_on_floor():
+	# 	animated_sprite.play("jump")
+	# elif velocity.x != 0:
+	# 	animated_sprite.play("run")
+	# else:
+	# 	animated_sprite.play("idle")
+	# # Draw direction
+	# animated_sprite.flip_h = not facing_right
+
+	# # Play animations
+	# if !is_on_floor():
+	# 	pass
+	# 	# animated_sprite.play("JumpWindupSide")
+	# elif velocity.x != 0:
+	# 	animated_sprite.play("WalkSide")
+	# else:
+	# 	animated_sprite.play("Idle")
+
+	if is_on_floor() and not Input.is_action_just_pressed("Up") and animated_sprite.animation != "FallSide":
+		set_ground_anim()
+		# if velocity.x != 0:
+		# 	animated_sprite.play("WalkSide")
+		# else:
+		# 	animated_sprite.play("Idle")
+	elif !is_on_floor() and animated_sprite.animation == "AirUpSide" and velocity.y >= 0:
+		animated_sprite.play("AirDownSide")
+	elif animated_sprite.animation == "AirDownSide" and is_on_floor():
+		animated_sprite.play("FallSide")
 
 	# Draw direction
-	animated_sprite.flip_h = not facing_right
+	animated_sprite.flip_h = facing_right
 
 
 func maybe_pick_up() -> Node:

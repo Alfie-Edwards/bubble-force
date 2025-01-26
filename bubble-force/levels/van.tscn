@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=56 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="Script" path="res://levels/van.gd" id="1_d4m46"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ctxwbpvvbawrc" path="res://assets/animation/frontjump.png" id="7_2qy6q"]
 [ext_resource type="Texture2D" uid="uid://cte2qgeawxdge" path="res://assets/animation/sidejump.png" id="7_xiwp6"]
 [ext_resource type="Texture2D" uid="uid://bowk8xibx6dgo" path="res://assets/animation/sidewalk.png" id="8_10mo5"]
+[ext_resource type="PackedScene" uid="uid://76ih45l57rg7" path="res://scenes/player/player.tscn" id="10_e7v1l"]
+[ext_resource type="PackedScene" uid="uid://byel3yxvjjhp4" path="res://scenes/staff/staff.tscn" id="11_702qf"]
 
 [sub_resource type="Gradient" id="Gradient_bqfsu"]
 offsets = PackedFloat32Array(0.762987)
@@ -379,9 +381,16 @@ position = Vector2(695, 345)
 position = Vector2(411, 221)
 
 [node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
-position = Vector2(811, 308)
+visible = false
+position = Vector2(1050, 290)
 scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_yp3l4")
 animation = &"JumpFront"
 frame = 5
 frame_progress = 0.284809
+
+[node name="Player" parent="." instance=ExtResource("10_e7v1l")]
+position = Vector2(752, 420)
+
+[node name="Staff" parent="." instance=ExtResource("11_702qf")]
+position = Vector2(840, 335)

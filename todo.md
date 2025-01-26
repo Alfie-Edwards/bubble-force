@@ -48,8 +48,8 @@
 
 # programming
 
-* [ ] frame of the van
-* [ ] background graphics (inc. turning)
+* [x] frame of the van
+* [x] background graphics (inc. turning)
 * [x] items that bounce around
     * [x] big box
     * [x] little box
