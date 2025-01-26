@@ -62,6 +62,8 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 	for contact_index in state.get_contact_count():
 		var object_hit := state.get_contact_collider_object(contact_index)
 		if (is_instance_valid(object_hit)): # To fix a case where an object hits the player as player is deleted during level transition (intermission)
+			# if object_hit.owner.name == "Player":
+			# 	continue
 			var intensity = state.get_contact_impulse(contact_index).length()
 			if object_hit.has_method("_get_item_type") and object_hit._get_item_type() == "dagger":
 				intensity *= 2

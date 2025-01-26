@@ -4,11 +4,15 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var grab_ray: RayCast2D = $RayCast2D
 @onready var arm: = $Arm
+@onready var lol: = $Lol
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ARM_LENGTH = 15
 const BUBBLE_COOLDOWN_SECONDS = 0.3
+
+const PUSH_FORCE = 15.0
+const MIN_PUSH_FORCE = 10.0
 
 var facing_right: bool = true
 var staff = null
@@ -28,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	set_animation()
 
 	if holding_staff() and Input.is_action_just_pressed("Pickup"):
-		print("dropped the staff!!")
+		# print("dropped the staff!!")
 		staff.release(grab_ray.global_position, arm.rotation)
 		staff = null
 	else:
@@ -37,10 +41,44 @@ func _physics_process(delta: float) -> void:
 			print("picked up ", picked_up.name)
 			if picked_up.owner.name == "Staff":
 				if picked_up.owner.try_take():
-					print("picked up the staff!!")
+					# print("picked up the staff!!")
 					staff = picked_up.owner
 
+	var push_force = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
+	if lol.is_colliding() and velocity != Vector2(0, 0):
+		# print('lol: ', lol.get_collider(), ' / ', lol.get_collision_normal())
+		shunt(lol.get_collider(), velocity.normalized() * push_force)
+
 	move_and_slide()
+
+	# shunt items when you move into them
+	# print('--------------')
+	# print('speed ', velocity.length())
+	# print('push force ', push_force)
+	# print('colliding with ', get_slide_collision_count(), ' items')
+	# print('pos delta: ', get_position_delta())
+	# print('real velocity: ', get_real_velocity())
+	# print('last motion: ', get_last_motion())
+	# print('vel: ', velocity)
+	# print('wall normal: ', get_wall_normal())
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		# print(c, ' -> ', c.get_collider())
+		shunt(c.get_collider(), -c.get_normal() * push_force)
+		# if c.get_collider() is RigidBody2D:
+		# 	print('applying force to ', c.get_collider())
+		# 	c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
+	# if lol.is_colliding() and velocity != Vector2(0, 0):
+	# 	print('lol: ', lol.get_collider(), ' / ', lol.get_collision_normal())
+	# 	shunt(lol.get_collider(), velocity.normalized() * push_force)
+	# else:
+	# 	print('nope')
+
+
+func shunt(collider, vector: Vector2) -> void:
+	if collider is RigidBody2D:
+		# print('applying force to ', collider)
+		collider.apply_central_impulse(vector)
 
 
 func _process(_delta: float) -> void:
