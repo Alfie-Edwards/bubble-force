@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkaay4am5lgji"]
+[gd_scene load_steps=5 format=3 uid="uid://bkaay4am5lgji"]
 
 [ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_menus_template/base/scenes/opening/opening.tscn" id="1_kbxeq"]
 [ext_resource type="Script" path="res://scenes/opening/opening.gd" id="2_3ilfi"]
 [ext_resource type="Texture2D" uid="uid://foqsuqn5ivqd" path="res://assets/godot_engine_logo/logo_vertical_color_dark.png" id="3_gifjm"]
+[ext_resource type="Texture2D" uid="uid://40f1hvngh1a7" path="res://assets/goodtemlogo.png" id="4_ewxjh"]
 
 [node name="Opening" instance=ExtResource("1_kbxeq")]
 script = ExtResource("2_3ilfi")
@@ -11,3 +12,13 @@ images = Array[Texture2D]([ExtResource("3_gifjm")])
 
 [node name="BackgroundMusicPlayer" parent="." index="0"]
 bus = &"Master"
+
+[node name="Goodtemlogo" type="Sprite2D" parent="." index="2"]
+position = Vector2(570, 325)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("4_ewxjh")
+
+[node name="ColorRect" type="ColorRect" parent="." index="3"]
+z_index = -1
+offset_right = 1154.0
+offset_bottom = 652.0

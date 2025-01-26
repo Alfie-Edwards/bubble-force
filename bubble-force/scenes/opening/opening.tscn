@@ -15,3 +15,9 @@ bus = &"Master"
 position = Vector2(570, 325)
 scale = Vector2(0.19, 0.19)
 texture = ExtResource("3_ohiaf")
+
+[node name="ColorRect" type="ColorRect" parent="." index="3"]
+z_index = -1
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 652.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqk0ko0y63qoy"]
+[gd_scene load_steps=6 format=3 uid="uid://dqk0ko0y63qoy"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/scenes/loading_screen/loading_screen.tscn" id="1_phjg7"]
+[ext_resource type="PackedScene" uid="uid://cd0jbh4metflb" path="res://addons/maaacks_menus_template/base/scenes/loading_screen/loading_screen.tscn" id="1_phjg7"]
 [ext_resource type="Script" path="res://scenes/loading_screen/loading_screen_with_shader_caching.gd" id="2_a3euf"]
+[ext_resource type="Texture2D" uid="uid://dhlth0njmtt5o" path="res://assets/bubblebgtile.png" id="3_ijocn"]
+[ext_resource type="FontFile" uid="uid://c8l4xf12mkpay" path="res://assets/ChelseaMarket-Regular.ttf" id="4_15o8u"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_klnwy"]
 
@@ -13,6 +15,23 @@ _mesh = SubResource("QuadMesh_klnwy")
 _matching_extensions = Array[String]([".tres", ".material", ".res"])
 _ignore_subfolders = Array[String]([".", ".."])
 _shader_delay_timer = 0.1
+
+[node name="BackgroundColor" parent="Control" index="1"]
+color = Color(1, 1, 1, 1)
+
+[node name="BackgroundTextureRect" parent="Control" index="2"]
+texture = ExtResource("3_ijocn")
+stretch_mode = 1
+
+[node name="ProgressLabel" parent="Control/VBoxContainer" index="0"]
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_15o8u")
+theme_override_font_sizes/font_size = 30
+
+[node name="ProgressBar" parent="Control/VBoxContainer" index="1"]
+theme_override_fonts/font = ExtResource("4_15o8u")
+theme_override_font_sizes/font_size = 30
 
 [node name="SpatialShaderTypeCaches" type="Node3D" parent="." index="2"]
 unique_name_in_owner = true

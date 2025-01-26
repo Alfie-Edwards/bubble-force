@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d18hjlcbw5ih0"]
+[gd_scene load_steps=24 format=3 uid="uid://d18hjlcbw5ih0"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cve0u"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_wnblf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4lxc22j71pmo" path="res://scenes/credits/credits.tscn" id="4_7kcfi"]
 [ext_resource type="Texture2D" uid="uid://dhlth0njmtt5o" path="res://assets/bubblebgtile.png" id="5_nr4x8"]
 [ext_resource type="Theme" uid="uid://b8ar28jfyvu2d" path="res://themes/uitheme.tres" id="5_xcs10"]
+[ext_resource type="Texture2D" uid="uid://40f1hvngh1a7" path="res://assets/goodtemlogo.png" id="7_n6p5y"]
 
 [sub_resource type="FontFile" id="FontFile_rgjht"]
 subpixel_positioning = 0
@@ -410,8 +411,13 @@ theme = ExtResource("5_xcs10")
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
-theme_override_colors/font_color = Color(0, 0.9991, 0.316427, 1)
-text = "oOoOober"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 92
+text = "HEXPRESS DELIVERY"
+
+[node name="SubTitleMargin" parent="MenuContainer" index="1"]
+visible = false
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
@@ -435,6 +441,15 @@ visible = false
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Continue"
+
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuContainer" index="3"]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(117, 609)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("7_n6p5y")
 
 [node name="FlowControl" parent="FlowControlContainer" index="0"]
 theme = ExtResource("5_xcs10")
