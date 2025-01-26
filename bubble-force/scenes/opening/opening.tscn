@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxvclrhefymig"]
+[gd_scene load_steps=4 format=3 uid="uid://cxvclrhefymig"]
 
 [ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_menus_template/base/scenes/opening/opening.tscn" id="1_mxh86"]
 [ext_resource type="Script" path="res://scenes/opening/opening.gd" id="2_7fpfh"]
+[ext_resource type="Texture2D" uid="uid://40f1hvngh1a7" path="res://assets/goodtemlogo.png" id="3_ohiaf"]
 
 [node name="Opening" instance=ExtResource("1_mxh86")]
 script = ExtResource("2_7fpfh")
@@ -9,3 +10,8 @@ next_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
 
 [node name="BackgroundMusicPlayer" parent="." index="0"]
 bus = &"Master"
+
+[node name="Goodtemlogo" type="Sprite2D" parent="." index="2"]
+position = Vector2(570, 325)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("3_ohiaf")
