@@ -9,6 +9,7 @@ collision_mask = 3
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("1_smt2l")
+max_wrapping = 18.0
 
 [node name="Wrapping" type="Line2D" parent="."]
 closed = true

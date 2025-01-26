@@ -16,6 +16,7 @@ const DAMAGE_MULTIPLIER = 0.01
 			health = 0
 		else:
 			health = new_value
+		self.modulate = Color(1, new_value / max_health, new_value / max_health, 1)
 
 @export var max_wrapping: float = 50
 @export var wrapping: float = 0:
@@ -53,8 +54,6 @@ func update_wrapping(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if wrapping < 20:
-		wrapping += delta
 	pass
 
 

@@ -3,7 +3,7 @@ extends Sprite2D
 
 @onready var collider: Area2D = $Area2D
 
-const WRAP_AMOUNT = 1
+const WRAP_AMOUNT = 0.33
 const INITIAL_SPEED: float = 10
 const BASE_LIFETIME_SECONDS = 3
 const POP_DURATION = 0.2

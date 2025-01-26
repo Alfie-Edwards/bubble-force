@@ -9,9 +9,9 @@ extends CharacterBody2D
 @onready var hold_pos: = $HoldPos
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 const ARM_LENGTH = 100
-const BUBBLE_COOLDOWN_SECONDS = 0.3
+const BUBBLE_COOLDOWN_SECONDS = 0.1
 
 const PUSH_FORCE = 15.0
 const MIN_PUSH_FORCE = 10.0

@@ -13,13 +13,13 @@ var road = preload("res://game_objects/effects/road.tscn")
 var spr_tree1 = preload("res://assets/tree1.png")
 var spr_tree2 = preload("res://assets/tree2.png")
 var spr_tree3 = preload("res://assets/tree3.png")
-var angle: float
+var angle: float = 0
 var road_spawn_angle: float
 var last_road: Polygon2D
 var first_road: Polygon2D
 var t_last_oncoming: int = 0
-@export var speed = 0
-@export var road_turn_rate = 0
+@export var speed: float = 0
+@export var road_turn_rate: float = 0
 
 @onready var health_label = $HealthLabel
 @onready var player = $Player
@@ -30,7 +30,6 @@ func _ready() -> void:
 	Turn.inside = $Inside
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	mouse_active = true
-	angle = 0
 
 	last_road = road.instantiate()
 	last_road.z = 1
@@ -112,7 +111,9 @@ func _process(delta: float) -> void:
 	for child in get_children():
 		if child.has_method("_update_perspective"):
 			child._update_perspective(speed * delta, angle)
-			var darkness = clampf(1 / child.z, 0, 0.5)
+			var darkness = 1 / child.z
+			darkness = clamp(darkness, 0, 1)
+			darkness = pow(darkness, 1/1.5)
 			child.modulate = Color(darkness, darkness, darkness, 1)
 
 	health_label.text = ""
@@ -138,7 +139,6 @@ class TimelineEvent:
 		self.t0 = t0
 
 	func _tick(delta: float, t: int) -> void:
-		# print(t - t0)
 		if (t - t0) > duration:
 			_end()
 
@@ -156,6 +156,11 @@ class Stop extends TimelineEvent:
 		super(delta, t)
 
 
+class Wait extends TimelineEvent:
+	func _init(van: Node2D, duration: int) -> void:
+		super(van, duration)
+
+
 class Start extends TimelineEvent:
 	func _init(van: Node2D) -> void:
 		super(van, 2000)
@@ -167,19 +172,24 @@ class Start extends TimelineEvent:
 
 
 class TurnRoad extends TimelineEvent:
+	var turn_rate: float
 	func _init(van: Node2D, turn_rate: float) -> void:
 		super(van, int(1000 * van.ROAD_SPAWN_Z / van.CRUISE_SPEED))
+		self.turn_rate = turn_rate
+
+	func _begin(t0: int) -> void:
 		van.road_turn_rate = turn_rate
+		super(t0)
 
 
 class TurnRoadLeft extends TurnRoad:
 	func _init(van: Node2D) -> void:
-		super(van, -0.15)
+		super(van, -0.3)
 
 
 class TurnRoadRight extends TurnRoad:
 	func _init(van: Node2D) -> void:
-		super(van, 0.15)
+		super(van, 0.3)
 
 
 class Pickup extends TimelineEvent:
@@ -193,7 +203,6 @@ class Pickup extends TimelineEvent:
 		var elapsed = (t - t0)
 		var item = (elapsed / 1000)
 		if item > -1 and item < items.size() and (delta * 1000) > (elapsed % 1000):
-			print(item)
 			items[item].transform = items[item].transform.translated(Vector2(576, -100))
 			van.add_child(items[item])
 
@@ -238,7 +247,10 @@ class Turn extends TimelineEvent:
 	func _init(van: Node2D, power: float) -> void:
 		self.power = power
 		super(van, int(1000 * van.ROAD_SPAWN_Z / van.CRUISE_SPEED))
+
+	func _begin(t0: int) -> void:
 		van.road_turn_rate = 0
+		super(t0)
 
 	func _tick(delta: float, t: int) -> void:
 		for body in inside.get_overlapping_bodies():
@@ -248,23 +260,26 @@ class Turn extends TimelineEvent:
 
 
 class LeftTurn extends Turn:
-	func _init(van: Node2D, power: float) -> void:
-		super(van, -power)
+	pass
 
 
 class RightTurn extends Turn:
-	pass
+	func _init(van: Node2D, power: float) -> void:
+		super(van, -power)
 
 
 var tome = preload("res://game_objects/items/tome.tscn")
 var tome2 = preload("res://game_objects/items/tome2.tscn")
 var urn = preload("res://game_objects/items/urn.tscn")
+var dagger = preload("res://game_objects/items/dagger.tscn")
+var explosives = preload("res://game_objects/items/explosives.tscn")
+var potion = preload("res://game_objects/items/explosives.tscn")
 
 var timeline_events: Array[TimelineEvent]
 var timeline_event_idx : int = 0
 func reset_timeline():
 	timeline_events = [
-		Stop.new(self),
+		Wait.new(self, 3000),
 		Pickup.new(self, [
 			tome.instantiate(),
 			tome2.instantiate(),
@@ -276,11 +291,47 @@ func reset_timeline():
 		Stop.new(self),
 		Dropoff.new(self),
 		Pickup.new(self, [
+			urn.instantiate(),
+			potion.instantiate(),
 			tome.instantiate(),
-			tome.instantiate(),
-			tome.instantiate(),
-			tome2.instantiate(),
-			tome2.instantiate(),
 		]),
+		Start.new(self),
+		SpeedBump.new(self, 200),
+		Stop.new(self),
+		Dropoff.new(self),
+		Pickup.new(self, [
+			dagger.instantiate(),
+			tome2.instantiate(),
+			explosives.instantiate(),
+		]),
+		Start.new(self),
+		SpeedBump.new(self, 200),
+		TurnRoadLeft.new(self),
+		LeftTurn.new(self, 1200),
+		TurnRoadRight.new(self),
+		RightTurn.new(self, 1200),
+		SpeedBump.new(self, 200),
+		SpeedBump.new(self, 200),
+		SpeedBump.new(self, 300),
+		Stop.new(self),
+		Dropoff.new(self),
+		Pickup.new(self, [
+			tome.instantiate(),
+			tome.instantiate(),
+			explosives.instantiate(),
+			explosives.instantiate(),
+			explosives.instantiate(),
+		]),
+		Start.new(self),
+		TurnRoadRight.new(self),
+		RightTurn.new(self, 1500),
+		SpeedBump.new(self, 200),
+		TurnRoadRight.new(self),
+		RightTurn.new(self, 1000),
+		SpeedBump.new(self, 200),
+		SpeedBump.new(self, 300),
+		SpeedBump.new(self, 400),
+		Stop.new(self),
+		Dropoff.new(self),
 	]
 	timeline_event_idx = 0

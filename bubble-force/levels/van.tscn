@@ -18,9 +18,6 @@ colors = PackedColorArray(0.16, 0.16, 0.16, 1)
 gradient = SubResource("Gradient_4bo0v")
 fill_from = Vector2(1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
-size = Vector2(1152, 648)
-
 [sub_resource type="Gradient" id="Gradient_fl2oq"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.038961, 0.49026, 1)
@@ -29,6 +26,9 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jn8qj"]
 gradient = SubResource("Gradient_fl2oq")
 fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
+size = Vector2(1152, 648)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0duq"]
 size = Vector2(268, 659)
@@ -379,6 +379,11 @@ position = Vector2(576.672, 199.5)
 scale = Vector2(0.398707, 0.216874)
 texture = ExtResource("2_2p142")
 
+[node name="Fog" type="Sprite2D" parent="."]
+position = Vector2(576.5, 393)
+scale = Vector2(18.0469, 8.09375)
+texture = SubResource("GradientTexture2D_jn8qj")
+
 [node name="Physics" type="Area2D" parent="."]
 visible = false
 metadata/_edit_lock_ = true
@@ -388,18 +393,8 @@ metadata/_edit_group_ = true
 position = Vector2(576, 324)
 shape = SubResource("RectangleShape2D_0wj6x")
 
-[node name="Fog" type="Sprite2D" parent="."]
-position = Vector2(576.5, 393)
-scale = Vector2(18.0469, 8.09375)
-texture = SubResource("GradientTexture2D_jn8qj")
-
 [node name="Walls" type="StaticBody2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Walls"]
-position = Vector2(582, 323)
-scale = Vector2(0.411485, 0.411485)
-texture = ExtResource("1_727li")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1017, 332.5)
@@ -419,6 +414,11 @@ one_way_collision_margin = 84.2
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
 position = Vector2(570.5, 562.5)
 shape = SubResource("RectangleShape2D_s7k8m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(582, 323)
+scale = Vector2(0.411485, 0.411485)
+texture = ExtResource("1_727li")
 
 [node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
 visible = false

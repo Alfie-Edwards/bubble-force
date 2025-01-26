@@ -1,19 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3mksq6hcqaoi"]
+[gd_scene load_steps=8 format=3 uid="uid://b3mksq6hcqaoi"]
 
 [ext_resource type="Script" path="res://game_objects/items/potion.gd" id="1_geh57"]
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_nigdf"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_i0aic"]
+[ext_resource type="Texture2D" uid="uid://ba81aj4s4dnts" path="res://assets/potion.png" id="4_aaoih"]
 
-[sub_resource type="Resource" id="Resource_p37qi"]
+[sub_resource type="Resource" id="Resource_jumhr"]
 script = ExtResource("2_i0aic")
-polygon = PackedVector2Array(0, -60, -30, -60, -30, 60, 30, 60, 30, -60)
+polygon = PackedVector2Array(1, 22, 30, 21, 27, -25, 12, -49, -13, -51, -30, -22, -28, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o5q5"]
+size = Vector2(59, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f506"]
+size = Vector2(27, 39)
 
 [node name="Potion" type="Node2D"]
 script = ExtResource("1_geh57")
 
 [node name="Item" parent="." instance=ExtResource("1_nigdf")]
 type = "potion"
-wrapping_path = SubResource("Resource_p37qi")
+wrapping_path = SubResource("Resource_jumhr")
 max_health = 100.0
 health = 100.0
 wrapping = 15.0
+stops = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_6o5q5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Item"]
+position = Vector2(-0.5, -33.5)
+shape = SubResource("RectangleShape2D_8f506")
+
+[node name="Potion" type="Sprite2D" parent="."]
+position = Vector2(1, -15)
+scale = Vector2(0.329114, 0.329114)
+texture = ExtResource("4_aaoih")

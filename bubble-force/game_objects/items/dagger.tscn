@@ -9,7 +9,7 @@
 script = ExtResource("2_lbp8t")
 polygon = PackedVector2Array(-1, 31, 3, 23, 5, 15, 5, -9, 5, -24, 1, -31, -3, -28, -5, -18, -5, 21, -4, 27)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxl0i"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5uuw"]
 size = Vector2(10, 62)
 
 [node name="Dagger" type="Node2D"]
@@ -20,6 +20,7 @@ type = "dagger"
 wrapping_path = SubResource("Resource_pydt8")
 max_health = 100.0
 health = 100.0
+wrapping = 15.0
 
 [node name="Sacrificialknife" type="Sprite2D" parent="Item"]
 position = Vector2(-9.53674e-07, -9.53674e-07)
@@ -27,4 +28,4 @@ scale = Vector2(0.116505, 0.116505)
 texture = ExtResource("4_4syuc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
-shape = SubResource("RectangleShape2D_rxl0i")
+shape = SubResource("RectangleShape2D_t5uuw")

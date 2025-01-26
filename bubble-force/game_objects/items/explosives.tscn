@@ -1,23 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqeyw2vnhwo04"]
+[gd_scene load_steps=9 format=3 uid="uid://cqeyw2vnhwo04"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_5jirx"]
 [ext_resource type="Script" path="res://game_objects/items/explosives.gd" id="1_og3pr"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_2tp6m"]
+[ext_resource type="Texture2D" uid="uid://cx3r8w0ec5tm" path="res://assets/explosive.png" id="4_l1a64"]
 [ext_resource type="PackedScene" uid="uid://cv0ocuptg3tng" path="res://game_objects/effects/explosion.tscn" id="4_tu184"]
 
-[sub_resource type="Resource" id="Resource_u6ucc"]
+[sub_resource type="Resource" id="Resource_pa2mr"]
 script = ExtResource("2_2tp6m")
-polygon = PackedVector2Array(0, 30, 30, 30, 30, -30, -30, -30, -30, 30)
+polygon = PackedVector2Array(39, 30, 53, -44, 32, -79, 3, -80, -39, -44, -39, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4bgr"]
+size = Vector2(85, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o5vs"]
+size = Vector2(31, 36)
 
 [node name="Explosives" type="Node2D"]
 script = ExtResource("1_og3pr")
 
 [node name="Item" parent="." instance=ExtResource("1_5jirx")]
 type = "explosives"
-wrapping_path = SubResource("Resource_u6ucc")
+wrapping_path = SubResource("Resource_pa2mr")
 max_health = 10.0
 health = 10.0
+stops = 1
+
+[node name="Explosive" type="Sprite2D" parent="Item"]
+position = Vector2(4, -24)
+scale = Vector2(0.0614035, 0.0614035)
+texture = ExtResource("4_l1a64")
 
 [node name="Explosion" parent="Item" instance=ExtResource("4_tu184")]
-radius = 200.0
+radius = 500.0
 strength = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+position = Vector2(4.5, -7.5)
+shape = SubResource("RectangleShape2D_u4bgr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Item"]
+position = Vector2(16.5, -62)
+shape = SubResource("RectangleShape2D_2o5vs")
