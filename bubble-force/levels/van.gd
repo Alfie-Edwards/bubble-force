@@ -131,7 +131,7 @@ class TimelineEvent:
 		self.t0 = t0
 
 	func _tick(delta: float, t: int) -> void:
-		print(t - t0)
+		# print(t - t0)
 		if (t - t0) > duration:
 			_end()
 

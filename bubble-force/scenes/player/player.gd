@@ -40,6 +40,7 @@ func holding_staff() -> bool:
 func _ready() -> void:
 	animated_sprite.connect("animation_looped", anim_finished)
 	animated_sprite.connect("animation_finished", anim_finished)
+	print("to start, hold pos is ", hold_pos.position)
 
 
 func set_ground_anim() -> void:
@@ -55,6 +56,31 @@ func anim_finished() -> void:
 			animated_sprite.play("AirUpSide")
 	elif animated_sprite.animation == "FallSide" and is_on_floor():
 		set_ground_anim()
+
+
+func get_vertical_bounds(rb: RigidBody2D):
+	# var col_shapes = rb.find_children(".*", "CollisionShape2D")
+	# print('have ', col_shapes.size())
+	var current_top: float = INF
+	var current_bottom: float = -INF
+	# for cs in col_shapes:
+	for cs in rb.get_children():
+		if cs is not CollisionShape2D:
+			continue
+		# print('\tlooking at ', cs)
+		var rect = cs.shape.get_rect()
+		# print('\t\trect = ', rect)
+		var top = min(rect.position.y, rect.end.y)
+		var bottom = max(rect.position.y, rect.end.y)
+		# print('\t\tthis shapes top is ', top)
+		# print('\t\tthis shapes bottom is ', bottom)
+
+		current_top = min(top, current_top)
+		current_bottom = max(bottom, current_bottom)
+		# print('\t\tcurrent top is ', current_top)
+		# print('\t\tcurrent bottom is ', current_bottom)
+
+	return { "top": current_top, "bottom": current_bottom }
 
 
 func _physics_process(delta: float) -> void:
@@ -85,10 +111,19 @@ func _physics_process(delta: float) -> void:
 					if picked_up.owner.try_take():
 						staff = picked_up.owner
 				elif held_item == null:
+					var bounds = get_vertical_bounds(picked_up)
+
+
 					held_item = picked_up
 					held_item_parent = picked_up.get_parent()
 					held_item_owner = picked_up.owner
 					held_item.reparent(self)
+
+					var hp = hold_pos.position
+					if (not is_nan(bounds["bottom"])) and (not is_nan(bounds["top"])):
+						var offset = ((bounds["bottom"] + bounds["top"]) / 2) - 20
+						if abs(offset) < 800:
+							hp.y -= offset
 
 					held_item.position = hold_pos.position
 					held_item.rotation = 0
