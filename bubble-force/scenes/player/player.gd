@@ -18,6 +18,9 @@ const MIN_PUSH_FORCE = 10.0
 
 const THROW_RIGHT_VEL: = Vector2(200, -150)
 
+const STAFF_ROT: float = 16.5
+const STAFF_OFF_Y: float = 35
+
 var facing_right: bool = true
 var staff = null
 
@@ -130,7 +133,7 @@ func shunt(collider, vector: Vector2) -> void:
 func _process(_delta: float) -> void:
 	set_arm_rotation()
 
-	# arm.get_node("HeldStaff").visible = holding_staff()
+	arm.get_node("HeldStaff").visible = holding_staff()
 
 	if holding_staff() and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var now = Time.get_ticks_msec()
@@ -163,7 +166,17 @@ func set_arm_rotation() -> void:
 
 	var arm_distance_fraction = arm_length / ARM_LENGTH
 	arm.position = arm_pos + (hp - arm_pos) * (1 - arm_distance_fraction)
+
 	arm.flip_h = facing_right
+	var staff_sprite = arm.get_node("HeldStaff")
+	if facing_right:
+		staff_sprite.rotation = deg_to_rad(180 - STAFF_ROT)
+		staff_sprite.flip_h = true
+		staff_sprite.position.x = -STAFF_OFF_Y
+	else:
+		staff_sprite.rotation = deg_to_rad(180 + STAFF_ROT)
+		staff_sprite.flip_h = false
+		staff_sprite.position.x = STAFF_OFF_Y
 
 	# arm.position = (arm_pos + hp) / 2
 	arm.rotation = atan2(hp.y - arm_pos.y, hp.x - arm_pos.x) - PI / 2

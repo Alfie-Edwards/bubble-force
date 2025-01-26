@@ -1,9 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://76ih45l57rg7"]
+[gd_scene load_steps=61 format=3 uid="uid://76ih45l57rg7"]
 
 [ext_resource type="Texture2D" uid="uid://c1ii8e83w5ujb" path="res://assets/knight.png" id="1_b01km"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ywren"]
 [ext_resource type="Texture2D" uid="uid://b8t1ce8d3vguh" path="res://assets/sidearm.png" id="2_wqitl"]
 [ext_resource type="Texture2D" uid="uid://ctxwbpvvbawrc" path="res://assets/animation/frontjump.png" id="3_3760r"]
+[ext_resource type="Texture2D" uid="uid://dmvk22m52ahcs" path="res://assets/staff.png" id="3_odi52"]
 [ext_resource type="Texture2D" uid="uid://cte2qgeawxdge" path="res://assets/animation/sidejump.png" id="4_ra0l0"]
 [ext_resource type="Texture2D" uid="uid://bowk8xibx6dgo" path="res://assets/animation/sidewalk.png" id="5_b3ugw"]
 
@@ -429,6 +430,13 @@ position = Vector2(-22, -117)
 rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_wqitl")
+
+[node name="HeldStaff" type="Sprite2D" parent="Arm"]
+z_index = -15
+position = Vector2(35, -5.00013)
+rotation = 3.42957
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("3_odi52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -81)
