@@ -208,3 +208,6 @@ mesh = SubResource("QuadMesh_3t3ir")
 [node name="Lol" type="RayCast2D" parent="."]
 position = Vector2(0, -18)
 target_position = Vector2(0, -1)
+
+[node name="HoldPos" type="Node2D" parent="."]
+position = Vector2(0, -35)
