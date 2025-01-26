@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=63 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="Script" path="res://levels/van.gd" id="1_d4m46"]
@@ -361,6 +361,10 @@ size = Vector2(625, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cta12"]
 size = Vector2(653, 445)
 
+[sub_resource type="LabelSettings" id="LabelSettings_35uj6"]
+font_size = 42
+font_color = Color(1, 0, 0, 1)
+
 [node name="Van" type="Node2D"]
 script = ExtResource("1_d4m46")
 metadata/_edit_vertical_guides_ = [139.0]
@@ -449,3 +453,11 @@ shape = SubResource("RectangleShape2D_isl8d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inside"]
 position = Vector2(563.5, 240.5)
 shape = SubResource("RectangleShape2D_cta12")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 26.0
+offset_right = 103.0
+offset_bottom = 60.0
+text = "♥︎♥︎♥︎"
+label_settings = SubResource("LabelSettings_35uj6")

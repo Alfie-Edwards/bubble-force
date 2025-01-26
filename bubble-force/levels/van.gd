@@ -21,6 +21,9 @@ var t_last_oncoming: int = 0
 @export var speed = 0
 @export var road_turn_rate = 0
 
+@onready var health_label = $HealthLabel
+@onready var player = $Player
+
 func _ready() -> void:
 	randomize()
 	SpeedBump.floor = $Floor
@@ -28,7 +31,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	mouse_active = true
 	angle = 0
-	
+
 	last_road = road.instantiate()
 	last_road.z = 1
 	last_road.depth = ROAD_DEPTH
@@ -59,7 +62,7 @@ func _input(event):
 
 func _process(delta: float) -> void:
 	var t: int = Time.get_ticks_msec()
-	
+
 	if timeline_events[timeline_event_idx]:
 		if timeline_events[timeline_event_idx].ended:
 			timeline_event_idx += 1
@@ -74,7 +77,7 @@ func _process(delta: float) -> void:
 
 	var road_progress = (first_road.depth - first_road.z) / first_road.depth
 	angle = first_road.angle_bottom + (first_road.angle_top - first_road.angle_bottom) * road_progress
-	
+
 	while (last_road.z + last_road.depth) <= ROAD_SPAWN_Z:
 		var new_road = road.instantiate()
 		new_road.z = (last_road.z + last_road.depth)
@@ -85,7 +88,7 @@ func _process(delta: float) -> void:
 		last_road = new_road
 		add_child(last_road)
 		move_child(last_road, SPAWN_IDX)
-	
+
 	if (t - t_last_oncoming) > ONCOMING_MIN_DELAY:
 		if randf_range(0, 2) < delta:
 			var new_oncoming = oncoming.instantiate()
@@ -105,13 +108,15 @@ func _process(delta: float) -> void:
 			add_child(new_oncoming)
 			move_child(new_oncoming, SPAWN_IDX)
 			t_last_oncoming = t
-	
+
 	for child in get_children():
 		if child.has_method("_update_perspective"):
 			child._update_perspective(speed * delta, angle)
 			var darkness = clampf(1 / child.z, 0, 0.5)
 			child.modulate = Color(darkness, darkness, darkness, 1)
-			
+
+	health_label.text = "♥︎" * player.health
+
 
 func next_event():
 	pass
@@ -189,7 +194,7 @@ class Pickup extends TimelineEvent:
 			print(item)
 			items[item].transform = items[item].transform.translated(Vector2(576, -100))
 			van.add_child(items[item])
-		
+
 		super(delta, t)
 
 

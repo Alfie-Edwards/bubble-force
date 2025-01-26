@@ -188,6 +188,7 @@ func shoot():
 	var bubble = bubble_scene.instantiate()
 	bubble.initialise(position + (hand_pos() * scale), hand_pos() - grab_ray.position)
 	get_parent().add_child(bubble)
+	take_damage()
 
 
 func set_arm_rotation() -> void:
