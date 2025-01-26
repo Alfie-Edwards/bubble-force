@@ -197,14 +197,16 @@ class Pickup extends TimelineEvent:
 	var spawned: int
 	func _init(van: Node2D, items: Array[Node2D]) -> void:
 		self.items = items
+		self.spawned = -1
 		super(van, (items.size()) * 1000)
 
 	func _tick(delta: float, t: int) -> void:
 		var elapsed = (t - t0)
 		var item = (elapsed / 1000)
-		if item > -1 and item < items.size() and (delta * 1000) > (elapsed % 1000):
+		if item > -1 and item < items.size() and spawned < item:
 			items[item].transform = items[item].transform.translated(Vector2(576, -100))
 			van.add_child(items[item])
+			spawned = item
 
 		super(delta, t)
 
@@ -273,13 +275,13 @@ var tome2 = preload("res://game_objects/items/tome2.tscn")
 var urn = preload("res://game_objects/items/urn.tscn")
 var dagger = preload("res://game_objects/items/dagger.tscn")
 var explosives = preload("res://game_objects/items/explosives.tscn")
-var potion = preload("res://game_objects/items/explosives.tscn")
+var potion = preload("res://game_objects/items/potion.tscn")
 
 var timeline_events: Array[TimelineEvent]
 var timeline_event_idx : int = 0
 func reset_timeline():
 	timeline_events = [
-		Wait.new(self, 3000),
+		Wait.new(self, 1000),
 		Pickup.new(self, [
 			tome.instantiate(),
 			tome2.instantiate(),

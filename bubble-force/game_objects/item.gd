@@ -9,6 +9,7 @@ const DAMAGE_MULTIPLIER = 0.01
 @export var health: float = -1:
 	set(new_value):
 		if new_value <= 0:
+			print(player)
 			if player != null:
 				print("SHOULD TAKE DAMAGE!!!")
 				player.take_damage()
