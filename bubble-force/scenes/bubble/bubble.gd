@@ -25,13 +25,13 @@ func initialise(pos: Vector2, velocity: Vector2) -> void:
 
 	direction = velocity.angle()
 	direction += randf_range(-DIRECTION_RANGE / 2,
-	                         DIRECTION_RANGE / 2)
+							 DIRECTION_RANGE / 2)
 
 	var size = randf_range(1 - (SCALE_RANGE / 2), 1 + (SCALE_RANGE / 2))
 	scale *= Vector2(size, size)
 
 	lifetime = BASE_LIFETIME_SECONDS * randf_range(1 - (LIFETIME_RANGE / 2),
-	                                               1 + (LIFETIME_RANGE / 2))
+												   1 + (LIFETIME_RANGE / 2))
 
 
 func age() -> float:

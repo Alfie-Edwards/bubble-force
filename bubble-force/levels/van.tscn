@@ -1,8 +1,8 @@
 [gd_scene load_steps=54 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
-[ext_resource type="PackedScene" uid="uid://centid6hghplj" path="res://game_objects/items/Urn.tscn" id="2_3f57k"]
-[ext_resource type="PackedScene" uid="uid://ycl1q4vqjohy" path="res://game_objects/player.tscn" id="2_dda04"]
+[ext_resource type="Script" path="res://levels/van.gd" id="1_d4m46"]
+[ext_resource type="PackedScene" uid="uid://centid6hghplj" path="res://game_objects/items/urn.tscn" id="2_3f57k"]
 [ext_resource type="PackedScene" uid="uid://cqeyw2vnhwo04" path="res://game_objects/items/explosives.tscn" id="3_rcx38"]
 [ext_resource type="PackedScene" uid="uid://cb08r8o8fg0co" path="res://game_objects/items/dagger.tscn" id="4_kfxqe"]
 [ext_resource type="PackedScene" uid="uid://b3mksq6hcqaoi" path="res://game_objects/items/potion.tscn" id="5_pajhq"]
@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bowk8xibx6dgo" path="res://assets/animation/sidewalk.png" id="8_10mo5"]
 
 [sub_resource type="Gradient" id="Gradient_bqfsu"]
-offsets = PackedFloat32Array(0, 0.285714, 0.75974, 0.808442)
-colors = PackedColorArray(0.313726, 0.486275, 1, 1, 0.435294, 0.827451, 0.901961, 1, 1, 1, 1, 1, 0.623529, 0.364706, 0.180392, 1)
+offsets = PackedFloat32Array(0.762987)
+colors = PackedColorArray(0.741385, 0.741385, 0.741385, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ar0hv"]
 gradient = SubResource("Gradient_bqfsu")
@@ -335,6 +335,8 @@ animations = [{
 }]
 
 [node name="Van" type="Node2D"]
+script = ExtResource("1_d4m46")
+metadata/_edit_vertical_guides_ = [139.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -364,10 +366,6 @@ position = Vector2(582, 323)
 scale = Vector2(0.411485, 0.411485)
 texture = ExtResource("1_727li")
 
-[node name="Player" parent="." instance=ExtResource("2_dda04")]
-visible = false
-position = Vector2(804, 343)
-
 [node name="Urn" parent="." instance=ExtResource("2_3f57k")]
 position = Vector2(352, 383)
 
@@ -376,9 +374,6 @@ position = Vector2(571, 151)
 
 [node name="Dagger" parent="." instance=ExtResource("4_kfxqe")]
 position = Vector2(695, 345)
-
-[node name="Tome2" parent="." instance=ExtResource("8_uiwlp")]
-position = Vector2(587, 207)
 
 [node name="Potion" parent="." instance=ExtResource("5_pajhq")]
 position = Vector2(411, 221)

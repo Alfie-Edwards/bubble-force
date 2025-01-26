@@ -139,8 +139,7 @@ func set_arm_rotation() -> void:
 	var arm_pos: Vector2 = grab_ray.position + Vector2(grab_ray.scale.x / 2, grab_ray.scale.y / 2)
 
 	arm.position = (arm_pos + hp) / 2
-	arm.rotation = atan2(hp.y - arm_pos.y,
-	                     hp.x - arm_pos.x)
+	arm.rotation = atan2(hp.y - arm_pos.y, hp.x - arm_pos.x)
 
 
 func handle_movement(delta: float) -> void:

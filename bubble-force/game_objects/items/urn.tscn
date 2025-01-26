@@ -66,3 +66,7 @@ shape = SubResource("RectangleShape2D_uog5g")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Item"]
 position = Vector2(1, -67.5)
 shape = SubResource("RectangleShape2D_qg61i")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(1, 17.5)
+shape = SubResource("RectangleShape2D_dlb62")

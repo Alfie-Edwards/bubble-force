@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d218il0l2b1r8"]
+
+[ext_resource type="Script" path="res://game_objects/effects/oncoming.gd" id="1_bxlna"]
+[ext_resource type="Texture2D" uid="uid://dgouotbqoh36d" path="res://assets/icon.svg" id="1_w4dpm"]
+
+[node name="Oncoming" type="Sprite2D"]
+texture = ExtResource("1_w4dpm")
+script = ExtResource("1_bxlna")

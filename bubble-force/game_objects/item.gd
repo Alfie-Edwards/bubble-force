@@ -65,15 +65,27 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 			# if object_hit.owner.name == "Player":
 			# 	continue
 			var intensity = state.get_contact_impulse(contact_index).length()
-			if object_hit.has_method("_get_item_type") and object_hit._get_item_type() == "dagger":
-				intensity *= 2
-			if intensity > DAMAGE_THRESHOLD:
-				var damage = (intensity - DAMAGE_THRESHOLD) * DAMAGE_MULTIPLIER
-				if damage > wrapping:
-					health -= (damage - wrapping)
-					wrapping = 0
-				else:
-					wrapping -= damage
+			
+						# If this is a dagger popping its own wrapping,
+			# or we are  popping our wrapping on an unprotected dagger.
+			var dagger = (
+				_get_item_type() == "dagger" and
+				wrapping > 0
+			) or (
+				object_hit.has_method("_get_item_type") and 
+				object_hit._get_item_type() == "dagger" and 
+				object_hit.wrapping <= 0
+			)
+			
+			var damage = (intensity - DAMAGE_THRESHOLD) * DAMAGE_MULTIPLIER
+			if dagger:
+				# Daggers pop wrapping twice as fast.
+				damage += min(damage, wrapping / 2)
+			if damage > wrapping:
+				health -= (damage - wrapping)
+				wrapping = 0
+			elif damage > 0:
+				wrapping -= damage
 
 
 func _get_configuration_warnings():
@@ -87,5 +99,3 @@ func _get_configuration_warnings():
 	if not type:
 		warnings.append("`type` unset.")
 	return warnings
-
-
