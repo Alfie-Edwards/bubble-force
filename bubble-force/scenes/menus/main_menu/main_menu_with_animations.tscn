@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d18hjlcbw5ih0"]
+[gd_scene load_steps=25 format=3 uid="uid://d18hjlcbw5ih0"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cve0u"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_wnblf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dhlth0njmtt5o" path="res://assets/bubblebgtile.png" id="5_nr4x8"]
 [ext_resource type="Theme" uid="uid://b8ar28jfyvu2d" path="res://themes/uitheme.tres" id="5_xcs10"]
 [ext_resource type="Texture2D" uid="uid://40f1hvngh1a7" path="res://assets/goodtemlogo.png" id="7_n6p5y"]
+[ext_resource type="Texture2D" uid="uid://daa18no2ipduk" path="res://assets/hexpresslogo.png" id="7_wuyxv"]
 
 [sub_resource type="FontFile" id="FontFile_rgjht"]
 subpixel_positioning = 0
@@ -414,11 +415,17 @@ theme = ExtResource("5_xcs10")
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+visible = false
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 92
 text = "HEXPRESS DELIVERY"
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuContainer/TitleMargin/TitleContainer" index="1"]
+position = Vector2(568, 116)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("7_wuyxv")
 
 [node name="SubTitleMargin" parent="MenuContainer" index="1"]
 visible = false
