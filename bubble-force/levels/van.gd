@@ -296,6 +296,7 @@ func reset_timeline():
 		Pickup.new(self, [
 			tome.instantiate(),
 			tome2.instantiate(),
+			potion.instantiate(),
 		]),
 		Start.new(self),
 		TurnRoadLeft.new(self),

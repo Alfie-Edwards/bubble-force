@@ -14,6 +14,7 @@ func _on_death() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var damage_rate = (abs($"Item".transform.get_rotation()) - MIN_SPILL_ANGLE) / (PI - MIN_SPILL_ANGLE)
-	if damage_rate > 0:
-		$Item.health -= damage_rate * delta * SPILL_MULTIPLIER
+	if $Item:
+		var damage_rate = (abs($Item.transform.get_rotation()) - MIN_SPILL_ANGLE) / (PI - MIN_SPILL_ANGLE)
+		if damage_rate > 0:
+			$Item.health -= damage_rate * delta * SPILL_MULTIPLIER
