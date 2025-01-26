@@ -40,7 +40,7 @@ func holding_staff() -> bool:
 
 
 func _ready() -> void:
-	# print(self.get_path())
+	print(self.get_path())
 	animated_sprite.connect("animation_looped", anim_finished)
 	animated_sprite.connect("animation_finished", anim_finished)
 	# print("to start, hold pos is ", hold_pos.position)
@@ -284,4 +284,6 @@ func take_damage() -> void:
 	health = health - 1
 	if health <= 0:
 		print("DEAD!!!!")
-		get_tree().change_scene_to_file("res://scenes/lose/lose.tscn")
+		var tree = get_tree()
+		if tree != null:
+			tree.change_scene_to_file("res://scenes/lose/lose.tscn")

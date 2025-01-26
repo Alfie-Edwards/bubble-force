@@ -10,6 +10,7 @@ const DAMAGE_MULTIPLIER = 0.01
 	set(new_value):
 		if new_value <= 0:
 			if player != null:
+				print("SHOULD TAKE DAMAGE!!!")
 				player.take_damage()
 			if _on_death:
 				_on_death.call()
@@ -32,7 +33,7 @@ var _collision_rects: Array[RectangleShape2D]
 @export var _on_death: Callable
 @export var stops: int
 
-@onready var player: Node = get_node("/root/Van/Player")
+@onready var player: Node = get_node("/root/App/Van/Player")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -54,6 +55,7 @@ func update_wrapping(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# print(player)
 	pass
 
 
