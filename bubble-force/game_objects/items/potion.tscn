@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_6o5q5")
 position = Vector2(-0.5, -33.5)
 shape = SubResource("RectangleShape2D_8f506")
 
-[node name="Potion" type="Sprite2D" parent="."]
+[node name="Potion" type="Sprite2D" parent="Item"]
 position = Vector2(1, -15)
 scale = Vector2(0.329114, 0.329114)
 texture = ExtResource("4_aaoih")

@@ -42,7 +42,10 @@ func _ready() -> void:
 	$Wrapping.points = wrapping_path.polygon
 	for child in get_children():
 		if child is CollisionShape2D and child.shape is RectangleShape2D:
-			_collision_rects.append(child.shape)
+			var copy = RectangleShape2D.new()
+			copy.size = child.shape.size
+			child.shape = copy
+			_collision_rects.append(copy)
 
 	update_wrapping(wrapping)
 
