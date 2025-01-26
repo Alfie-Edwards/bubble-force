@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hexpress Delivery"
-run/main_scene="res://levels/van.tscn"
+run/main_scene="res://scenes/menus/main_menu/main_menu_with_animations.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="res://assets/goodtemsplash.png"
