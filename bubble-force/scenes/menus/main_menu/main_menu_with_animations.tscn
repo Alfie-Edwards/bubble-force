@@ -401,6 +401,9 @@ bus = &"Master"
 texture = ExtResource("5_nr4x8")
 stretch_mode = 1
 
+[node name="VersionMargin" parent="." index="5"]
+visible = false
+
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
@@ -412,7 +415,8 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 92
 text = "HEXPRESS DELIVERY"
 
@@ -446,7 +450,6 @@ text = "Continue"
 visible = false
 
 [node name="thegoodtem" type="Sprite2D" parent="MenuContainer" index="3"]
-self_modulate = Color(0, 0, 0, 1)
 position = Vector2(117, 609)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("7_n6p5y")
