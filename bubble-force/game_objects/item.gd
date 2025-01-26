@@ -15,8 +15,11 @@ const DAMAGE_MULTIPLIER = 0.01
 		else:
 			health = new_value
 
+@export var max_wrapping: float = 50
 @export var wrapping: float = 0:
 	set(new_value):
+		# TODO #finish: store per-subclass max or something?
+		new_value = clamp(new_value, 0, max_wrapping)
 		var delta = new_value - wrapping
 		wrapping = new_value
 		if is_node_ready():
@@ -69,7 +72,7 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 					wrapping = 0
 				else:
 					wrapping -= damage
-				
+
 
 func _get_configuration_warnings():
 	var warnings: Array[String]
@@ -82,5 +85,5 @@ func _get_configuration_warnings():
 	if not type:
 		warnings.append("`type` unset.")
 	return warnings
-	
-	
+
+

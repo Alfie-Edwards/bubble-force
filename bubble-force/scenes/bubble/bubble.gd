@@ -3,9 +3,11 @@ extends Sprite2D
 
 @onready var collider: Area2D = $Area2D
 
+const WRAP_AMOUNT = 2
 const INITIAL_SPEED: float = 10
 const BASE_LIFETIME_SECONDS = 3
 const POP_DURATION = 0.2
+
 const SCALE_RANGE = 0.4
 const LIFETIME_RANGE = 0.4
 const DIRECTION_RANGE = 0.4
@@ -44,6 +46,7 @@ func current_speed() -> float:
 
 func _physics_process(_delta: float) -> void:
 	if collider.has_overlapping_bodies():
+		try_wrap_item()
 		pop()
 	elif not popping:
 		if age() < lifetime:
@@ -54,6 +57,13 @@ func _physics_process(_delta: float) -> void:
 			pass
 		else:
 			pop()
+
+
+func try_wrap_item() -> void:
+	for node in collider.get_overlapping_bodies():
+		if "wrapping" not in node:
+			continue
+		node.wrapping += WRAP_AMOUNT
 
 
 func pop() -> void:
