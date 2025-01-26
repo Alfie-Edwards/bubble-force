@@ -445,7 +445,7 @@ text = "Continue"
 [node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuContainer" index="3"]
+[node name="thegoodtem" type="Sprite2D" parent="MenuContainer" index="3"]
 self_modulate = Color(0, 0, 0, 1)
 position = Vector2(117, 609)
 scale = Vector2(0.06, 0.06)
