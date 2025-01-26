@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be84sb2k1ldu"
-path="res://.godot/imported/road.png-72005ad96a94b3869b023c4f4a0b0b7d.ctex"
+uid="uid://dhlth0njmtt5o"
+path="res://.godot/imported/bubblebgtile.png-c42c6c8453c0ee53275a9b8c9dd3a26a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/road.png"
-dest_files=["res://.godot/imported/road.png-72005ad96a94b3869b023c4f4a0b0b7d.ctex"]
+source_file="res://assets/bubblebgtile.png"
+dest_files=["res://.godot/imported/bubblebgtile.png-c42c6c8453c0ee53275a9b8c9dd3a26a.ctex"]
 
 [params]
 

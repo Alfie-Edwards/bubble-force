@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b8ar28jfyvu2d"]
+
+[ext_resource type="FontFile" uid="uid://c8l4xf12mkpay" path="res://assets/ChelseaMarket-Regular.ttf" id="1_hncuf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbi82"]
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.051971, 0.051971, 0.0519709, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 13
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 17
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcyq1"]
+bg_color = Color(0.945011, 0.945011, 0.945011, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.0453124, 0.0453124, 0.0453124, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 17
+corner_radius_bottom_right = 13
+corner_radius_bottom_left = 14
+corner_detail = 20
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("1_hncuf")
+Button/styles/hover = SubResource("StyleBoxFlat_rbi82")
+Button/styles/normal = SubResource("StyleBoxFlat_mcyq1")
+Label/fonts/font = ExtResource("1_hncuf")
