@@ -32,7 +32,7 @@ var _collision_rects: Array[RectangleShape2D]
 @export var _on_death: Callable
 @export var stops: int
 
-@onready var player: Node = get_node("root/Van/Player")
+@onready var player: Node = get_node("/root/Van/Player")
 
 
 # Called when the node enters the scene tree for the first time.
