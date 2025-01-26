@@ -1,9 +1,31 @@
-[gd_scene load_steps=19 format=3 uid="uid://d18hjlcbw5ih0"]
+[gd_scene load_steps=23 format=3 uid="uid://d18hjlcbw5ih0"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cve0u"]
 [ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_wnblf"]
 [ext_resource type="PackedScene" uid="uid://daeeb7r62xpuq" path="res://scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_261xq"]
 [ext_resource type="PackedScene" uid="uid://4lxc22j71pmo" path="res://scenes/credits/credits.tscn" id="4_7kcfi"]
+[ext_resource type="Texture2D" uid="uid://dhlth0njmtt5o" path="res://assets/bubblebgtile.png" id="5_nr4x8"]
+[ext_resource type="Theme" uid="uid://b8ar28jfyvu2d" path="res://themes/uitheme.tres" id="5_xcs10"]
+
+[sub_resource type="FontFile" id="FontFile_rgjht"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/48/0/ascent = 0.0
+cache/0/48/0/descent = 0.0
+cache/0/48/0/underline_position = 0.0
+cache/0/48/0/underline_thickness = 0.0
+cache/0/48/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_s60yl"]
+default_font = SubResource("FontFile_rgjht")
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -352,6 +374,7 @@ graph_offset = Vector2(-180.277, 49)
 [sub_resource type="Theme" id="Theme_l61kq"]
 
 [node name="MainMenu" instance=ExtResource("1_cve0u")]
+theme = SubResource("Theme_s60yl")
 script = ExtResource("2_wnblf")
 game_scene_path = "res://app.tscn"
 options_packed_scene = ExtResource("3_261xq")
@@ -370,14 +393,22 @@ parameters/conditions/intro_done = false
 [node name="BackgroundMusicPlayer" parent="." index="3"]
 bus = &"Master"
 
+[node name="BackgroundTextureRect" parent="." index="4"]
+texture = ExtResource("5_nr4x8")
+stretch_mode = 1
+
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="MenuContainer" parent="." index="6"]
+theme = ExtResource("5_xcs10")
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
-text = "BoOoOober"
+theme_override_colors/font_color = Color(0, 0.9991, 0.316427, 1)
+text = "oOoOober"
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
@@ -389,6 +420,7 @@ text = "A Good Tem Gem"
 modulate = Color(1, 1, 1, 0)
 
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
+theme = ExtResource("5_xcs10")
 lock = true
 
 [node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
@@ -400,5 +432,8 @@ visible = false
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Continue"
+
+[node name="FlowControl" parent="FlowControlContainer" index="0"]
+theme = ExtResource("5_xcs10")
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
