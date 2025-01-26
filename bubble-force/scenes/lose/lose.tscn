@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfgjaxysnnpt3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_7ht7r"]
+
+[sub_resource type="Gradient" id="Gradient_n3g30"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tyoq6"]
+gradient = SubResource("Gradient_n3g30")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qfrf2"]
+font_size = 72
+
+[node name="Lose" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(590, 326.5)
+scale = Vector2(1212, 867)
+mesh = SubResource("QuadMesh_7ht7r")
+texture = SubResource("GradientTexture2D_tyoq6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1153.0
+offset_bottom = 652.0
+text = "YOU LOSE!"
+label_settings = SubResource("LabelSettings_qfrf2")
+horizontal_alignment = 1
+vertical_alignment = 1

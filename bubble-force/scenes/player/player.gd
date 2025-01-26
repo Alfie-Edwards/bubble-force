@@ -32,15 +32,18 @@ var held_item: Node = null
 var held_item_owner: Node = null
 var held_item_parent: Node = null
 
+var health: int = 3
+
 
 func holding_staff() -> bool:
 	return staff != null
 
 
 func _ready() -> void:
+	# print(self.get_path())
 	animated_sprite.connect("animation_looped", anim_finished)
 	animated_sprite.connect("animation_finished", anim_finished)
-	print("to start, hold pos is ", hold_pos.position)
+	# print("to start, hold pos is ", hold_pos.position)
 
 
 func set_ground_anim() -> void:
@@ -275,3 +278,10 @@ func maybe_pick_up() -> Node:
 	if Input.is_action_just_pressed("Pickup"):
 		return grab_ray.get_collider()
 	return null
+
+
+func take_damage() -> void:
+	health = health - 1
+	if health <= 0:
+		print("DEAD!!!!")
+		get_tree().change_scene_to_file("res://scenes/lose/lose.tscn")

@@ -9,6 +9,8 @@ const DAMAGE_MULTIPLIER = 0.01
 @export var health: float = -1:
 	set(new_value):
 		if new_value <= 0:
+			if player != null:
+				player.take_damage()
 			if _on_death:
 				_on_death.call()
 			health = 0
@@ -28,6 +30,8 @@ const DAMAGE_MULTIPLIER = 0.01
 var _collision_rects: Array[RectangleShape2D]
 @export var _on_death: Callable
 @export var stops: int
+
+@onready var player: Node = get_node("root/Van/Player")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -66,18 +70,18 @@ func _integrate_forces(state : PhysicsDirectBodyState2D):
 			# if object_hit.owner.name == "Player":
 			# 	continue
 			var intensity = state.get_contact_impulse(contact_index).length()
-			
+
 						# If this is a dagger popping its own wrapping,
 			# or we are  popping our wrapping on an unprotected dagger.
 			var dagger = (
 				_get_item_type() == "dagger" and
 				wrapping > 0
 			) or (
-				object_hit.has_method("_get_item_type") and 
-				object_hit._get_item_type() == "dagger" and 
+				object_hit.has_method("_get_item_type") and
+				object_hit._get_item_type() == "dagger" and
 				object_hit.wrapping <= 0
 			)
-			
+
 			var damage = (intensity - DAMAGE_THRESHOLD) * DAMAGE_MULTIPLIER
 			if dagger:
 				# Daggers pop wrapping twice as fast.
