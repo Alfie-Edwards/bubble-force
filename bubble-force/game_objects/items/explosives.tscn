@@ -8,13 +8,13 @@
 
 [sub_resource type="Resource" id="Resource_pa2mr"]
 script = ExtResource("2_2tp6m")
-polygon = PackedVector2Array(22, 1, 26, -32, 16, -49, 3, -50, -16, -33, -17, 0)
+polygon = PackedVector2Array(28, 13, 36, -37, 23, -60, 13, -62, 4, -62, -25, -37, -24, 13, -24, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6b50"]
-size = Vector2(39.5, 34.5)
+size = Vector2(55.75, 49.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km8dq"]
-size = Vector2(11.5, 17)
+size = Vector2(16.75, 25)
 
 [node name="Explosives" type="Node2D"]
 script = ExtResource("1_og3pr")
@@ -27,19 +27,19 @@ health = 10.0
 wrapping = 15.0
 stops = 1
 
-[node name="Explosive" type="Sprite2D" parent="Item"]
-position = Vector2(4, -24)
-scale = Vector2(0.0288221, 0.0288221)
-texture = ExtResource("4_l1a64")
-
 [node name="Explosion" parent="Item" instance=ExtResource("4_tu184")]
 radius = 500.0
 strength = 1000.0
 
+[node name="Explosive" type="Sprite2D" parent="Item"]
+position = Vector2(4, -24)
+scale = Vector2(0.0413534, 0.0413534)
+texture = ExtResource("4_l1a64")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
-position = Vector2(3.25, -16.25)
+position = Vector2(3.125, -12.625)
 shape = SubResource("RectangleShape2D_y6b50")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Item"]
-position = Vector2(8.25, -41.5)
+position = Vector2(10.625, -49)
 shape = SubResource("RectangleShape2D_km8dq")
