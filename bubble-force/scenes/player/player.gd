@@ -39,16 +39,12 @@ func _physics_process(delta: float) -> void:
 	set_animation()
 
 	if Input.is_action_just_pressed("Pickup"):
-		print("----------")
 		if holding_staff():
 			staff.release(grab_ray.global_position, arm.rotation)
 			staff = null
 		elif held_item != null:
-			# print("dropped ", held_item, " (owner ", held_item.owner, ", parent ", held_item.get_parent(), ")")
-			# print("\theld_item_owner ", held_item_owner)
 			held_item.reparent(held_item_parent)
 			held_item.set_owner(held_item_owner)
-			# print("after patching ", held_item, " (owner ", held_item.owner, ", parent ", held_item.get_parent(), ")")
 
 			held_item.freeze = false
 			var impulse = THROW_RIGHT_VEL
@@ -68,27 +64,11 @@ func _physics_process(delta: float) -> void:
 					held_item = picked_up
 					held_item_parent = picked_up.get_parent()
 					held_item_owner = picked_up.owner
-					# print("picking up:")
-					# print("\theld_item ", held_item)
-					# print("\theld_item_parent ", held_item_parent)
-					# print("\theld_item_owner ", held_item_owner)
-
 					held_item.reparent(self)
 
 					held_item.position = hold_pos.position
 					held_item.rotation = 0
 					held_item.freeze = true
-
-					# print("picked up:")
-					# print("\theld_item ", held_item)
-					# print("\theld_item.parent ", held_item.get_parent())
-					# print("\theld_item.owner ", held_item.owner)
-
-	# if held_item != null:
-	# 	print(held_item.name)
-	# 	print(held_item.owner.name)
-	# 	held_item.owner.position = position + hold_pos.position
-	# 	held_item.owner.global_rotation = 0
 
 	var push_force = (PUSH_FORCE * velocity.length() / SPEED) + MIN_PUSH_FORCE
 	if lol.is_colliding() and velocity != Vector2(0, 0):
