@@ -1,11 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=62 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="Script" path="res://levels/van.gd" id="1_d4m46"]
-[ext_resource type="PackedScene" uid="uid://centid6hghplj" path="res://game_objects/items/urn.tscn" id="2_3f57k"]
-[ext_resource type="PackedScene" uid="uid://cqeyw2vnhwo04" path="res://game_objects/items/explosives.tscn" id="3_rcx38"]
-[ext_resource type="PackedScene" uid="uid://cb08r8o8fg0co" path="res://game_objects/items/dagger.tscn" id="4_kfxqe"]
-[ext_resource type="PackedScene" uid="uid://b3mksq6hcqaoi" path="res://game_objects/items/potion.tscn" id="5_pajhq"]
+[ext_resource type="Texture2D" uid="uid://crbmh7ejkelhi" path="res://assets/nightsky.png" id="2_2p142"]
 [ext_resource type="Texture2D" uid="uid://ctxwbpvvbawrc" path="res://assets/animation/frontjump.png" id="7_2qy6q"]
 [ext_resource type="Texture2D" uid="uid://cte2qgeawxdge" path="res://assets/animation/sidejump.png" id="7_xiwp6"]
 [ext_resource type="Texture2D" uid="uid://bowk8xibx6dgo" path="res://assets/animation/sidewalk.png" id="8_10mo5"]
@@ -13,16 +10,37 @@
 [ext_resource type="PackedScene" uid="uid://byel3yxvjjhp4" path="res://scenes/staff/staff.tscn" id="11_702qf"]
 [ext_resource type="Texture2D" uid="uid://l8gun1bqpb78" path="res://assets/staffstand.png" id="12_cfoyi"]
 
-[sub_resource type="Gradient" id="Gradient_bqfsu"]
-offsets = PackedFloat32Array(0.762987)
-colors = PackedColorArray(0.741385, 0.741385, 0.741385, 1)
+[sub_resource type="Gradient" id="Gradient_4bo0v"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.16, 0.16, 0.16, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ar0hv"]
-gradient = SubResource("Gradient_bqfsu")
-fill_to = Vector2(0, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_log8l"]
+gradient = SubResource("Gradient_4bo0v")
+fill_from = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wj6x"]
 size = Vector2(1152, 648)
+
+[sub_resource type="Gradient" id="Gradient_fl2oq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.038961, 0.49026, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jn8qj"]
+gradient = SubResource("Gradient_fl2oq")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0duq"]
+size = Vector2(268, 659)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds28p"]
+size = Vector2(260, 701)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bklu8"]
+size = Vector2(1191, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7k8m"]
+size = Vector2(1183, 213)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yarux"]
 atlas = ExtResource("7_2qy6q")
@@ -337,15 +355,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isl8d"]
+size = Vector2(625, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cta12"]
+size = Vector2(653, 445)
+
 [node name="Van" type="Node2D"]
 script = ExtResource("1_d4m46")
 metadata/_edit_vertical_guides_ = [139.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(18, 10.125)
-texture = SubResource("GradientTexture2D_ar0hv")
-metadata/_edit_lock_ = true
+position = Vector2(577.5, 528)
+scale = Vector2(18.0781, 3.96875)
+texture = SubResource("GradientTexture2D_log8l")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(576.672, 199.5)
+scale = Vector2(0.398707, 0.216874)
+texture = ExtResource("2_2p142")
 
 [node name="Physics" type="Area2D" parent="."]
 visible = false
@@ -356,30 +384,37 @@ metadata/_edit_group_ = true
 position = Vector2(576, 324)
 shape = SubResource("RectangleShape2D_0wj6x")
 
+[node name="Fog" type="Sprite2D" parent="."]
+position = Vector2(576.5, 393)
+scale = Vector2(18.0469, 8.09375)
+texture = SubResource("GradientTexture2D_jn8qj")
+
 [node name="Walls" type="StaticBody2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(9, 9)
-build_mode = 1
-polygon = PackedVector2Array(249, 91, 249, 444, 876, 444, 876, 91)
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls"]
 position = Vector2(582, 323)
 scale = Vector2(0.411485, 0.411485)
 texture = ExtResource("1_727li")
 
-[node name="Urn" parent="." instance=ExtResource("2_3f57k")]
-position = Vector2(352, 383)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1017, 332.5)
+shape = SubResource("RectangleShape2D_n0duq")
 
-[node name="Explosives" parent="." instance=ExtResource("3_rcx38")]
-position = Vector2(571, 151)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(130, 340.5)
+shape = SubResource("RectangleShape2D_ds28p")
 
-[node name="Dagger" parent="." instance=ExtResource("4_kfxqe")]
-position = Vector2(695, 345)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(593, 45)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_bklu8")
+one_way_collision = true
+one_way_collision_margin = 84.2
 
-[node name="Potion" parent="." instance=ExtResource("5_pajhq")]
-position = Vector2(411, 221)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(570.5, 562.5)
+shape = SubResource("RectangleShape2D_s7k8m")
 
 [node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -402,3 +437,15 @@ position = Vector2(836, 358.155)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("12_cfoyi")
 flip_h = true
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(570.5, 448)
+shape = SubResource("RectangleShape2D_isl8d")
+
+[node name="Inside" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside"]
+position = Vector2(563.5, 240.5)
+shape = SubResource("RectangleShape2D_cta12")

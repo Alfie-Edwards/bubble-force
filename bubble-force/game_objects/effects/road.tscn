@@ -1,16 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ugrk5vdsbl1a"]
+[gd_scene load_steps=3 format=3 uid="uid://ugrk5vdsbl1a"]
 
 [ext_resource type="Script" path="res://game_objects/effects/road.gd" id="1_pxl4k"]
-
-[sub_resource type="Gradient" id="Gradient_s76xn"]
-offsets = PackedFloat32Array(0, 0.538732, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.174626, 0.174626, 0.174626, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3p8wg"]
-gradient = SubResource("Gradient_s76xn")
+[ext_resource type="Texture2D" uid="uid://be84sb2k1ldu" path="res://assets/road.png" id="1_trl7w"]
 
 [node name="Road" type="Polygon2D"]
-texture = SubResource("GradientTexture2D_3p8wg")
-polygon = PackedVector2Array(0, 500, 500, 500, 400, 0, 100, 0)
-uv = PackedVector2Array(0, 128, 128, 128, 128, 0, 0, 0)
+texture = ExtResource("1_trl7w")
+polygon = PackedVector2Array(0, 500, 500, 500, 428, 0, 72, 0)
+uv = PackedVector2Array(0, 1762, 1762, 1762, 1762, 0, 0, 0)
 script = ExtResource("1_pxl4k")

@@ -27,6 +27,7 @@ const DAMAGE_MULTIPLIER = 0.01
 
 var _collision_rects: Array[RectangleShape2D]
 @export var _on_death: Callable
+@export var stops: int
 
 
 # Called when the node enters the scene tree for the first time.

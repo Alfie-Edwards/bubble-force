@@ -23,6 +23,7 @@ type = "tome"
 wrapping_path = SubResource("Resource_vx13v")
 max_health = 100.0
 health = 100.0
+stops = 1
 metadata/_edit_group_ = true
 
 [node name="Tome" type="Sprite2D" parent="Item"]
