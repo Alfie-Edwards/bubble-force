@@ -11,7 +11,6 @@ func _ready() -> void:
 
 
 func explode() -> void:
-	print(get_overlapping_bodies())
 	for body in get_overlapping_bodies():
 		if body is RigidBody2D:
 			var delta = body.global_position - global_position

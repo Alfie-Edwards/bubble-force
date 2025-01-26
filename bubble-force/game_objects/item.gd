@@ -4,7 +4,6 @@ const DAMAGE_THRESHOLD = 100
 const DAMAGE_MULTIPLIER = 0.01
 
 @export var type: String
-@export var collision_shapes: Array[RectangleShape2D]
 @export var wrapping_path: Vector2ArrayResource
 @export var max_health: float = -1
 @export var health: float = -1:
@@ -23,30 +22,31 @@ const DAMAGE_MULTIPLIER = 0.01
 		if is_node_ready():
 			update_wrapping(delta)
 
-var _collision_shapes: Array[CollisionShape2D]
+var _collision_rects: Array[RectangleShape2D]
 @export var _on_death: Callable
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Wrapping.points = wrapping_path.polygon
-	for rect in collision_shapes:
-		var collision_shape = CollisionShape2D.new()
-		collision_shape.shape = rect.duplicate()
-		add_child((collision_shape))
-		_collision_shapes.append(collision_shape)
+	for child in get_children():
+		if child is CollisionShape2D and child.shape is RectangleShape2D:
+			_collision_rects.append(child.shape)
+
 	update_wrapping(wrapping)
 
 
 func update_wrapping(delta: float) -> void:
 	$Wrapping.width = wrapping * 2
-	for collision_shape in _collision_shapes:
-		collision_shape.shape.size.x += delta * 2
-		collision_shape.shape.size.y += delta * 2
+	for rect in _collision_rects:
+		rect.size.x += delta * 2
+		rect.size.y += delta * 2
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if wrapping < 20:
+		wrapping += delta
 	pass
 
 
@@ -77,8 +77,6 @@ func _get_configuration_warnings():
 		warnings.append("`max_health` unset.")
 	if health < 0:
 		warnings.append("`health` unset.")
-	if not collision_shapes:
-		warnings.append("`collision_shapes` unset.")
 	if not wrapping_path:
 		warnings.append("`wrapping_path` unset.")
 	if not type:

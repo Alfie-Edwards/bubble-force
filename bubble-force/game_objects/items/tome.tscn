@@ -1,31 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://men07kougpyc"]
+[gd_scene load_steps=8 format=3 uid="uid://men07kougpyc"]
 
 [ext_resource type="Script" path="res://game_objects/items/tome.gd" id="1_d7p6x"]
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_icmnd"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_dven1"]
 [ext_resource type="Texture2D" uid="uid://ciqmjdh64kjiu" path="res://assets/tome.png" id="4_g1dcj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga3qg"]
-size = Vector2(108, 44)
-
-[sub_resource type="Resource" id="Resource_m2ycu"]
+[sub_resource type="Resource" id="Resource_vx13v"]
 script = ExtResource("2_dven1")
-polygon = PackedVector2Array(3, 22, -40, 22, -56, 4, -54, -19, -40, -22, 42, -22, 55, -14, 57, -11, 55, 20, 29, 22, 19, 22)
+polygon = PackedVector2Array(53, -19, 37, -22, -11, -22, -41, -22, -54, -15, -56, -10, -55, 19, -53, 21, 8, 22, 40, 22, 54, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s88oh"]
+size = Vector2(93, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhpbt"]
+size = Vector2(95, 31)
 
 [node name="Tome" type="Node2D"]
 script = ExtResource("1_d7p6x")
 
 [node name="Item" parent="." instance=ExtResource("1_icmnd")]
 type = "tome"
-collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_ga3qg")])
-wrapping_path = SubResource("Resource_m2ycu")
+wrapping_path = SubResource("Resource_vx13v")
 max_health = 100.0
 health = 100.0
-wrapping = 15.0
 metadata/_edit_group_ = true
 
 [node name="Tome" type="Sprite2D" parent="Item"]
 position = Vector2(0, 1.90735e-06)
 rotation = -3.14159
-scale = Vector2(0.120365, 0.120365)
+scale = Vector2(-0.12, 0.12)
 texture = ExtResource("4_g1dcj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+position = Vector2(-6.5, 3.5)
+shape = SubResource("RectangleShape2D_s88oh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Item"]
+position = Vector2(5.5, -6.5)
+shape = SubResource("RectangleShape2D_vhpbt")

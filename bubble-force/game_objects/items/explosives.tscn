@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqeyw2vnhwo04"]
+[gd_scene load_steps=6 format=3 uid="uid://cqeyw2vnhwo04"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_5jirx"]
 [ext_resource type="Script" path="res://game_objects/items/explosives.gd" id="1_og3pr"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_2tp6m"]
 [ext_resource type="PackedScene" uid="uid://cv0ocuptg3tng" path="res://game_objects/effects/explosion.tscn" id="4_tu184"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ld641"]
-size = Vector2(60, 60)
 
 [sub_resource type="Resource" id="Resource_u6ucc"]
 script = ExtResource("2_2tp6m")
@@ -17,7 +14,6 @@ script = ExtResource("1_og3pr")
 
 [node name="Item" parent="." instance=ExtResource("1_5jirx")]
 type = "explosives"
-collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_ld641")])
 wrapping_path = SubResource("Resource_u6ucc")
 max_health = 10.0
 health = 10.0

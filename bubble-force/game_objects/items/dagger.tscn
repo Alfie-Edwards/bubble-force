@@ -1,22 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb08r8o8fg0co"]
+[gd_scene load_steps=7 format=3 uid="uid://cb08r8o8fg0co"]
 
 [ext_resource type="PackedScene" uid="uid://cukbhgmh462b4" path="res://game_objects/item.tscn" id="1_hy5m5"]
 [ext_resource type="Script" path="res://game_objects/items/dagger.gd" id="1_yxcf1"]
 [ext_resource type="Script" path="res://addons/vector2_array_resource_editor/vector2_array_resource.gd" id="2_lbp8t"]
+[ext_resource type="Texture2D" uid="uid://51l0a753yc8u" path="res://assets/sacrificialknife.png" id="4_4syuc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e254"]
-size = Vector2(30, 15)
-
-[sub_resource type="Resource" id="Resource_sn28x"]
+[sub_resource type="Resource" id="Resource_pydt8"]
 script = ExtResource("2_lbp8t")
-polygon = PackedVector2Array(0, 8, 15, 8, 15, -7, -15, -7, -15, 8)
+polygon = PackedVector2Array(-1, 31, 3, 23, 5, 15, 5, -9, 5, -24, 1, -31, -3, -28, -5, -18, -5, 21, -4, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxl0i"]
+size = Vector2(10, 62)
 
 [node name="Dagger" type="Node2D"]
 script = ExtResource("1_yxcf1")
 
 [node name="Item" parent="." instance=ExtResource("1_hy5m5")]
 type = "dagger"
-collision_shapes = Array[RectangleShape2D]([SubResource("RectangleShape2D_1e254")])
-wrapping_path = SubResource("Resource_sn28x")
+wrapping_path = SubResource("Resource_pydt8")
 max_health = 100.0
 health = 100.0
+
+[node name="Sacrificialknife" type="Sprite2D" parent="Item"]
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(0.116505, 0.116505)
+texture = ExtResource("4_4syuc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+shape = SubResource("RectangleShape2D_rxl0i")
