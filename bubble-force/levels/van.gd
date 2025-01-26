@@ -115,7 +115,9 @@ func _process(delta: float) -> void:
 			var darkness = clampf(1 / child.z, 0, 0.5)
 			child.modulate = Color(darkness, darkness, darkness, 1)
 
-	health_label.text = "♥︎" * player.health
+	health_label.text = ""
+	for i in player.health:
+		health_label.text += "♥︎"
 
 
 func next_event():
