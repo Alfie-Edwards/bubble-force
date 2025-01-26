@@ -8,11 +8,14 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ARM_LENGTH = 15
+const BUBBLE_COOLDOWN_SECONDS = 0.3
 
 var facing_right: bool = true
 var staff = null
 
 var bubble_scene = preload("res://scenes/bubble/bubble.tscn")
+
+var time_last_shot: float = -1
 
 
 func holding_staff() -> bool:
@@ -45,23 +48,21 @@ func _process(_delta: float) -> void:
 
 	arm.get_node("HeldStaff").visible = holding_staff()
 
-
-func _input(event):
-	if holding_staff() and event.is_action_pressed("Click"):
-		shoot()
+	if holding_staff() and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		var now = Time.get_ticks_msec()
+		if time_last_shot == -1 or now - time_last_shot > BUBBLE_COOLDOWN_SECONDS * 1000.0:
+			time_last_shot = now
+			shoot()
 
 
 func hand_pos() -> Vector2:
 	return grab_ray.position + grab_ray.target_position
 
+
 func shoot():
 	var bubble = bubble_scene.instantiate()
-
 	bubble.initialise(position + (hand_pos() * scale), hand_pos() - grab_ray.position)
-
 	get_parent().add_child(bubble)
-
-	pass
 
 
 func set_arm_rotation() -> void:
