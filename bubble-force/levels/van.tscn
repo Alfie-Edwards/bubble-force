@@ -1,8 +1,10 @@
-[gd_scene load_steps=63 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=67 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="Script" path="res://levels/van.gd" id="1_d4m46"]
 [ext_resource type="Texture2D" uid="uid://crbmh7ejkelhi" path="res://assets/nightsky.png" id="2_2p142"]
+[ext_resource type="Texture2D" uid="uid://b8un0u6s5vabf" path="res://assets/wheel1.png" id="3_ve2uy"]
+[ext_resource type="Texture2D" uid="uid://bnwb0tyleelau" path="res://assets/wheel2.png" id="4_epdrg"]
 [ext_resource type="Texture2D" uid="uid://ctxwbpvvbawrc" path="res://assets/animation/frontjump.png" id="7_2qy6q"]
 [ext_resource type="Texture2D" uid="uid://cte2qgeawxdge" path="res://assets/animation/sidejump.png" id="7_xiwp6"]
 [ext_resource type="Texture2D" uid="uid://bowk8xibx6dgo" path="res://assets/animation/sidewalk.png" id="8_10mo5"]
@@ -361,6 +363,14 @@ size = Vector2(625, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cta12"]
 size = Vector2(653, 445)
 
+[sub_resource type="LabelSettings" id="LabelSettings_3oq2c"]
+font_size = 200
+font_color = Color(1, 0.811765, 0.239216, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p644l"]
+font_size = 200
+font_color = Color(1, 0.81, 0.24, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_35uj6"]
 font_size = 42
 font_color = Color(1, 0, 0, 1)
@@ -415,6 +425,14 @@ one_way_collision_margin = 84.2
 position = Vector2(570.5, 562.5)
 shape = SubResource("RectangleShape2D_s7k8m")
 
+[node name="Wheel1" type="Sprite2D" parent="."]
+position = Vector2(312, 531)
+texture = ExtResource("3_ve2uy")
+
+[node name="Wheel2" type="Sprite2D" parent="."]
+position = Vector2(845, 543)
+texture = ExtResource("4_epdrg")
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(582, 323)
 scale = Vector2(0.411485, 0.411485)
@@ -453,6 +471,22 @@ shape = SubResource("RectangleShape2D_isl8d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inside"]
 position = Vector2(563.5, 240.5)
 shape = SubResource("RectangleShape2D_cta12")
+
+[node name="RightLabel" type="Label" parent="."]
+offset_left = 903.0
+offset_top = 169.0
+offset_right = 1103.0
+offset_bottom = 442.0
+text = "→"
+label_settings = SubResource("LabelSettings_3oq2c")
+
+[node name="LeftLabel" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 164.0
+offset_right = 247.0
+offset_bottom = 437.0
+text = "←"
+label_settings = SubResource("LabelSettings_p644l")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = 38.0

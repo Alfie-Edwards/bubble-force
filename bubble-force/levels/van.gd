@@ -25,6 +25,10 @@ var t_last_oncoming: int = 0
 @onready var player = $Player
 
 func _ready() -> void:
+	$LeftLabel.hide()
+	$RightLabel.hide()
+	TurnRoadLeft.label = $LeftLabel
+	TurnRoadRight.label = $RightLabel
 	randomize()
 	SpeedBump.floor = $Floor
 	Turn.inside = $Inside
@@ -180,14 +184,21 @@ class TurnRoad extends TimelineEvent:
 	func _begin(t0: int) -> void:
 		van.road_turn_rate = turn_rate
 		super(t0)
+		self.label.show()
+
+	func _end() -> void:
+		self.label.hide()
+		super()
 
 
 class TurnRoadLeft extends TurnRoad:
+	static var label: Label
 	func _init(van: Node2D) -> void:
 		super(van, -0.3)
 
 
 class TurnRoadRight extends TurnRoad:
+	static var label: Label
 	func _init(van: Node2D) -> void:
 		super(van, 0.3)
 
