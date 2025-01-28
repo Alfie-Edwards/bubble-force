@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cukbhgmh462b4"]
 
 [ext_resource type="Script" path="res://game_objects/item.gd" id="1_smt2l"]
-[ext_resource type="Texture2D" uid="uid://wm6pfb5y0xxp" path="res://assets/wrap.png" id="2_3jdix"]
+[ext_resource type="Texture2D" uid="uid://bwi87bcdv34b4" path="res://assets/wrap blue.png" id="2_jb1jb"]
 
 [node name="Item" type="RigidBody2D"]
 collision_layer = 3
@@ -14,5 +14,5 @@ max_wrapping = 18.0
 [node name="Wrapping" type="Line2D" parent="."]
 closed = true
 width = 0.0
-texture = ExtResource("2_3jdix")
+texture = ExtResource("2_jb1jb")
 texture_mode = 1

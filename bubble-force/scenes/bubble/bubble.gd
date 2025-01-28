@@ -18,6 +18,10 @@ var popping: bool = false
 var lifetime: float = 0
 
 
+func _ready() -> void:
+	self.modulate = Color(0.69, 0.96, 0.97, 0.75)
+
+
 func initialise(pos: Vector2, velocity: Vector2) -> void:
 	position = pos
 

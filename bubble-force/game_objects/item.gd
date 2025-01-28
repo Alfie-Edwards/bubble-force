@@ -39,6 +39,7 @@ var _collision_rects: Array[RectangleShape2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Wrapping.modulate = Color(1., 1., 1., 0.66)
 	$Wrapping.points = wrapping_path.polygon
 	for child in get_children():
 		if child is CollisionShape2D and child.shape is RectangleShape2D:
