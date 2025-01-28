@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cjfqc6a0ngmr3"]
+[gd_scene load_steps=68 format=3 uid="uid://cjfqc6a0ngmr3"]
 
 [ext_resource type="Texture2D" uid="uid://md4leugoai73" path="res://assets/lorryframe.png" id="1_727li"]
 [ext_resource type="Script" path="res://levels/van.gd" id="1_d4m46"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bowk8xibx6dgo" path="res://assets/animation/sidewalk.png" id="8_10mo5"]
 [ext_resource type="PackedScene" uid="uid://76ih45l57rg7" path="res://scenes/player/player.tscn" id="10_e7v1l"]
 [ext_resource type="PackedScene" uid="uid://byel3yxvjjhp4" path="res://scenes/staff/staff.tscn" id="11_702qf"]
+[ext_resource type="AudioStream" uid="uid://bdsaidsfl4pmn" path="res://assets/bubble force bitch.mp3" id="12_11ovl"]
 [ext_resource type="Texture2D" uid="uid://l8gun1bqpb78" path="res://assets/staffstand.png" id="12_cfoyi"]
 
 [sub_resource type="Gradient" id="Gradient_4bo0v"]
@@ -495,3 +496,9 @@ offset_right = 103.0
 offset_bottom = 60.0
 text = "♥︎♥︎♥︎"
 label_settings = SubResource("LabelSettings_35uj6")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(668, -95)
+stream = ExtResource("12_11ovl")
+autoplay = true
+parameters/looping = true
